@@ -12,6 +12,17 @@ const PORT = process.env.PORT;
 const helmet = require('helmet');
 app.use(helmet());
 
+// Session / FileStore
+const session = require('express-session');
+const FileStore = require(`session-file-store`)(session);
+app.use(session({
+    store: new FileStore(),
+    secret: process.env.SESSION_SECRET
+}));
+
+// Auth
+// setupAuth(app);
+
 // For PORT. Configures express to use built-in middleware that 
 // can deal with form data.
 app.use(express.urlencoded({extended: true}));

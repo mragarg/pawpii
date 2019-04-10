@@ -26,8 +26,8 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-// User Router
-
+// USER Router
+app.use('/user', userRouter);
 
 // App Listen
 app.listen(PORT, () => {

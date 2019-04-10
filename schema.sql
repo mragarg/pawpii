@@ -27,6 +27,7 @@ create table dogs (
     breed varchar(500),
     age varchar(100),
     description varchar(8000),
+    image_url varchar(200),
     org_id integer references organizations(id)
 );
 

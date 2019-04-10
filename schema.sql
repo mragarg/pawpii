@@ -18,7 +18,7 @@ create table dogs (
 create table favorites (
     id serial primary key,
     user_id integer references users(id),
-    org_id integer references organizations(id)
+    dog_id integer references dogs(id)
 );
 
 create table organizations (

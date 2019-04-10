@@ -1,1 +1,11 @@
-// User Routes
+const express = require('express');
+const Router = express.Router;
+const userRoutes = Router();
+
+const {
+    getLoginPage
+} = require('../controllers/user');
+
+userRoutes.get('/login', getLoginPage);
+
+module.exports = userRoutes;

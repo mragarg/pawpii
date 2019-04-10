@@ -6,20 +6,6 @@ create table users (
     password varchar(500)
 );
 
-create table dogs (
-    id serial primary key,
-    name varchar(200),
-    breed varchar(500),
-    age varchar(100),
-    description varchar(8000),
-    org_id integer references organizations(id)
-);
-
-create table favorites (
-    id serial primary key,
-    user_id integer references users(id),
-    dog_id integer references dogs(id)
-);
 
 create table organizations (
     id serial primary key,
@@ -33,4 +19,19 @@ create table organizations (
     password varchar(500),
     description varchar(8000),
     website varchar(8000)
+);
+
+create table dogs (
+    id serial primary key,
+    dog_name varchar(200),
+    breed varchar(500),
+    age varchar(100),
+    description varchar(8000),
+    org_id integer references organizations(id)
+);
+
+create table favorites (
+    id serial primary key,
+    users_id integer references users(id),
+    dog_id integer references dogs(id)
 );

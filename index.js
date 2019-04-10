@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 app.use('/user', userRouter);
 
 // DOG Router
-app.use('/all-dogs', dogRouter);
+app.use('/dogs', dogRouter);
 
 // App Listen
 app.listen(PORT, () => {

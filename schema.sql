@@ -24,10 +24,13 @@ create table favorites (
 create table organizations (
     id serial primary key,
     name varchar(200),
-    website varchar(8000),
     address varchar(500),
     city varchar(100),
     state varchar(100),
+    zip varchar(100),
+    phone varchar(100),
     email varchar(500),
-    password varchar(500)
+    password varchar(500),
+    description varchar(8000),
+    website varchar(8000)
 );

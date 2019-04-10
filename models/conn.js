@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // first require 'pg-promise'
 // call it immediately, which gives us a configured database connector
 const pgp = require('pg-promise')({

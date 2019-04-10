@@ -1,5 +1,6 @@
 const db = require('./conn');
 
+
 class Favorite {
 
     static getUserFavorites(userId){

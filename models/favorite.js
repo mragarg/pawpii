@@ -9,8 +9,8 @@ class Favorite {
             on f.users_id = u.id
         inner join dogs d
             on f.dog_id = d.id
-        where u.id = ${userId}
-        `);
+        where u.id = $1
+        `, [userId]);
     }
 
 }

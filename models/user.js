@@ -10,7 +10,7 @@ class User {
         this.email = email;
         this.password = password;
     }
-
+    
     
     // adds a user
     static add(userData) {

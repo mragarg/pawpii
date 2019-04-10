@@ -13,13 +13,13 @@ class Dog {
     }
 
     // get all dogs
-    static getAll() {
-        db.any(`select * from dogs`);
+    static getAlldogs() {
+        return db.any(`select * from dogs`);
     }
 
     // get all dogs from an organization
     static getById(orgId) {
-        db.any(`select * from dogs where org_id=$1`, [orgId]);
+        return db.any(`select * from dogs where org_id=$1`, [orgId]);
     }
 
 }

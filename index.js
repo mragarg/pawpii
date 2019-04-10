@@ -4,6 +4,7 @@ const es6Renderer = require('express-es6-template-engine');
 
 // Routers
 const userRouter = require('./routes/user');
+const dogRouter = require('./routes/dog');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -39,6 +40,9 @@ app.get('/', (req, res) => {
 
 // USER Router
 app.use('/user', userRouter);
+
+// DOG Router
+app.use('/all-dogs', dogRouter);
 
 // App Listen
 app.listen(PORT, () => {

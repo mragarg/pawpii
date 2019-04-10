@@ -1,7 +1,7 @@
 const User = require('../models/user');
 
 function getLoginPage(req, res) {
-    res.send('Login Page');
+    res.render('user-login');
 }
 
 module.exports = {

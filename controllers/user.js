@@ -14,11 +14,12 @@ async function attemptLogin(req, res) {
     const theEmail = escapeHtml(req.body.email);
     const thePassword = escapeHtml(req.body.password);
 
+
     const theUser = await User.getByEmail(theEmail);
     const passwordIsCorrect = theUser.checkPassword(thePassword);
 
     if(passwordIsCorrect) {
-        res.redirect('/user/dashboard');
+        res.redirect('/dashboard');
     }
     else {
         res.render('user-login', {

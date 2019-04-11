@@ -6,6 +6,7 @@ const es6Renderer = require('express-es6-template-engine');
 const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
 const orgDogsRouter  =require('./routes/org-dogs');
+const stateRouter = require('./routes/state')
 
 const app = express();
 const PORT = process.env.PORT;
@@ -48,6 +49,8 @@ app.use('/dogs', dogRouter);
 //Orgs-Dog Router
 app.use('/org-dogs', orgDogsRouter);
 
+//Org-State Router
+app.use('/state', stateRouter);
 // App Listen
 app.listen(PORT, () => {
     console.log(`Server is running on Port ${PORT}.`)

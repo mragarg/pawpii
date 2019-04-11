@@ -5,6 +5,7 @@ const es6Renderer = require('express-es6-template-engine');
 // Routers
 const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
+const favoriteRouter = require('./routes/favorite')
 
 const loginRouter = require('./routes/login');
 
@@ -40,7 +41,12 @@ app.set('views', 'views');
 
 // GET Home
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('home');
+});
+
+// ABOUT Router
+app.get('/about', (req, res) => {
+    res.render('about');
 });
 
 // USER Router
@@ -48,6 +54,9 @@ app.use('/user', userRouter);
 
 // DOG Router
 app.use('/dogs', dogRouter);
+
+// FAVORITE Router
+app.use('/favorites', favoriteRouter);
 
 // LOGIN Router
 app.use('/login', loginRouter);

@@ -17,7 +17,7 @@ VALUES
 ;
 
 insert into dogs 
-    (dog_name, breed, age, description, image_url, org_id)
+    (name, breed, age, description, image_url, org_id)
 values 
     ('Mufasa', 'German Sheperd', '6 Years', 'Hi, my name is Mufasa and I''m a handsome 6 year old German Shepherd mix! I am very playful and sweet and love to play fetch, play with toys, play with people -- I very friendly! If you have another dog at home please bring them in for a Meet and Greet to make sure we would get along, I usually do well with other dogs and used to live with another dog about my size. I have been neutered, microchipped, vaccinated, and I''m ready to go home! Please come visit me at the Atlanta Humane Society''s Howell Mill campus today', 'https://g.petango.com/photos/910/3c49fd5d-82e9-4269-97e6-d920d730ad0c.jpg', 1),
     ('Bella', 'Retriever/Mix', '3 Years 2 Months', 'Why hello! I''m Bella. I love to spend time with my human friends, preferably doing some fun activity. In fact, I need a lot of exercise to be my best self. Plan on doing a 5K? Count me in! I''m the perfect training partner! I have no issues with sharing toys with you. Need to take my food bowl before I''m done? No problem, I don''t mind coming to you for affection; I''d love to be close friends! I get along with human folks spectacularly but I would rather not live with or hang out with other dogs. I''ll need to be the only pet in the household. Just us...sounds perfect to me! Visit me at the Howell Mill Campus ','https://g.petango.com/photos/910/e87d0729-5c74-46c3-ae9b-8e968d761c58.jpg', 1),
@@ -37,9 +37,16 @@ values
 ;
 
 insert into favorites
-    (users_id, dog_id)
+    (user_id, dog_id)
 values 
     (1,1),
+    (1,2),
+    (1,3),
+    (1,4),
+    (2,5),
+    (2,6),
+    (2,7),
     (2,1),
-    (3,1)
+    (3,2),
+    (3,4)
 ;

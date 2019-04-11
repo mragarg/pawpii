@@ -23,7 +23,7 @@ create table organizations (
 
 create table dogs (
     id serial primary key,
-    dog_name varchar(200),
+    name varchar(200),
     breed varchar(500),
     age varchar(100),
     description varchar(8000),
@@ -33,6 +33,6 @@ create table dogs (
 
 create table favorites (
     id serial primary key,
-    users_id integer references users(id),
+    user_id integer references users(id),
     dog_id integer references dogs(id)
 );

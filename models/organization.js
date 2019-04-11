@@ -24,23 +24,24 @@ class Organization {
         select dog_name, breed, age, dogs.description, image_url, org_id from dogs 
         inner join organizations 
         on dogs.org_id= organizations.id
-        where organizations.id=$1, [id]
-        `)
-        .then((arrayOfDogs) => {
-            return arrayOfDogs.map((dogData)=> {
-                const dogInstance = new Dog(
-                    dogData.id,
-                    dogData.name,
-                    dogData.breed,
-                    dogData.age,
-                    dogData.description,
-                    dogData.image_url,
-                    dogData.org_id
-                );
-                return dogInstance
-            })
+        where organizations.id=$1`,[id]
+        )
+        // .then((arrayOfDogs) => {
+        //     return arrayOfDogs.map((dogData)=> {
+        //         const dogInstance = new Dog(
+        //             dogData.id,
+        //             dogData.name,
+        //             dogData.breed,
+        //             dogData.age,
+        //             dogData.description,
+        //             dogData.image_url,
+        //             dogData.org_id
+        //         );
+        //         console.log(dogInstance)
+        //         return dogInstance
+        //     })
 
-        })
+        // })
     }
 
 

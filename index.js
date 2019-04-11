@@ -7,6 +7,11 @@ const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
 const favoriteRouter = require('./routes/favorite')
 
+const loginRouter = require('./routes/login');
+
+const orgDogsRouter  =require('./routes/org-dogs');
+
+
 const app = express();
 const PORT = process.env.PORT;
 
@@ -52,6 +57,12 @@ app.use('/dogs', dogRouter);
 
 // FAVORITE Router
 app.use('/favorites', favoriteRouter);
+
+// LOGIN Router
+app.use('/login', loginRouter);
+
+//Orgs-Dog Router
+app.use('/org-dogs', orgDogsRouter);
 
 // App Listen
 app.listen(PORT, () => {

@@ -20,8 +20,6 @@ async function attemptLogin(req, res) {
     const theUser = await User.getByEmail(theEmail);
     if (theUser) {
         const passwordIsCorrect = theUser.checkPassword(thePassword);
-        console.log(passwordIsCorrect);
-    
         if(passwordIsCorrect) {
             req.session.user = theUser.id;
             req.session.save(() => {
@@ -32,7 +30,7 @@ async function attemptLogin(req, res) {
             res.render('login', {
                 locals: {
                     email: theEmail,
-                    message: 'Email or password is incorrect. Please try again.',
+                    message: 'Password is incorrect. Please try again.',
                 }
             })
         }
@@ -41,7 +39,7 @@ async function attemptLogin(req, res) {
         res.render('login', {
             locals: {
                 email: theEmail,
-                message: 'Email or password is incorrect. Please try again.',
+                message: 'Email is incorrect. Please try again.',
             }
         })
     }

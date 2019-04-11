@@ -5,12 +5,15 @@ function getLoginPage(req, res) {
     res.render('login', {
         locals: {
             email: '',
+            message: 'Please login.',
         }
     });
 }
 
 async function attemptLogin(req, res) {
 
+    console.log(req.body.email);
+    console.log(req.body.password);
     const theEmail = escapeHtml(req.body.email);
     const thePassword = escapeHtml(req.body.password);
 
@@ -24,9 +27,10 @@ async function attemptLogin(req, res) {
         });
     }
     else {
-        res.render('user-login', {
+        res.render('login', {
             locals: {
-                email: req.body.email
+                email: theEmail,
+                message: 'Email or password is incorrect. Please try again.',
             }
         })
     }

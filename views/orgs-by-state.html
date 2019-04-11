@@ -44,7 +44,7 @@
         </div>
     </nav>
     <div>
-        <address>
+        <!-- <address>
             <strong>${orgs.name}</strong> 
             <br> 
             ${orgs.address}<br>
@@ -53,18 +53,33 @@
             ${orgs.phone}<br>
             ${orgs.email}<br>
                 
-        </address>
+        </address> -->
 
     </div>
-    <div class="card-group">
+    
+
+    <!-- <div class="card w-20"></div> -->
+    <div class="card-group text-center justify-content">
         ${
-            dogs.map((aDog) => {
-                return `<div class="card" style="width: 18rem;">
-                            <img src="${aDog.image_url}" class="card-img-top" alt="">
-                        </div>`
+            orgs.map((anOrg) => {
+                return `
+                <form
+    action="/org-dogs/${anOrg.id}"
+    method="GET"
+>
+                <div name="id" class="card" style="max-width: 18rem;" value=${anOrg.id}>
+                    <strong>${anOrg.name}</strong>
+                    ${anOrg.address}<br>
+                    ${anOrg.city} , ${anOrg.state}<br>
+                    
+                    <button type="submit" class="btn btn-primary">Go</button>
+
+                        </div>
+                        `
             }).join('')
         }
     </div>
+    </form>
 </head>
 <body>
     

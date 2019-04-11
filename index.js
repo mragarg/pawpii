@@ -5,7 +5,11 @@ const es6Renderer = require('express-es6-template-engine');
 // Routers
 const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
+
+const loginRouter = require('./routes/login');
+
 const orgDogsRouter  =require('./routes/org-dogs');
+
 
 const app = express();
 const PORT = process.env.PORT;
@@ -44,6 +48,9 @@ app.use('/user', userRouter);
 
 // DOG Router
 app.use('/dogs', dogRouter);
+
+// LOGIN Router
+app.use('/login', loginRouter);
 
 //Orgs-Dog Router
 app.use('/org-dogs', orgDogsRouter);

@@ -13,7 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>All Dogs</title>
+    <title>Favorites</title>
+</head>
+<body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark static-top">
         <div class="container">
@@ -46,7 +48,7 @@
             </div>
         </div>
     </nav>
-    <h1>Puppies looking for new home</h1>
+    <h1>Favorites</h1>
     <div class="card-group">
         ${
             dogs.map((aDog) => {
@@ -56,8 +58,5 @@
             }).join('')
         }
     </div>
-</head>
-<body>
-    
 </body>
 </html>

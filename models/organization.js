@@ -19,7 +19,7 @@ class Organization {
 
 
     // needs to retrieve all dogs by org ID 
-       static retrieveDogsById(id) {
+    static retrieveDogsById(id) {
         return db.any(`
         select dog_name, breed, age, dogs.description, image_url, org_id from dogs 
         inner join organizations 

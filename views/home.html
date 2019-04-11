@@ -13,42 +13,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <title>Home</title>
+    <style>
+        .page-background {
+            background: url(https://images.pexels.com/photos/1750378/pexels-photo-1750378.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+        }
+        .message {
+            font-family: 'Indie Flower', cursive;
+            text-shadow: 2px 2px black;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark static-top">
-        <div class="container">
-            <a class="navbar-brand" href="/">
-                    <img src="https://i.imgur.com/PnXehAt.png" alt="" style="width: 40%;">
-                </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home
-                        <span class="sr-only">(current)</span>
+    <div class="page-background ">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark static-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                        <img src="https://i.imgur.com/PnXehAt.png" alt="" style="width: 40%;">
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dogs">Dogs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/favorites">Favorites</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                </ul>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dogs">Dogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/favorites">Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    </ul>
+                </div>
             </div>
+        </nav>
+
+        <div class="message text-center text-white mt-3 display-4">
+            <p class="" style="font-size: 6vw; padding-top: 3vh">take home a friend today</p>
         </div>
-    </nav>
-    <h1>Welcome to PawPii</h1>
+
+    </div>
+
 
 </body>
 </html>

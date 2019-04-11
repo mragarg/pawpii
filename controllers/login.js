@@ -18,15 +18,26 @@ async function attemptLogin(req, res) {
     const thePassword = escapeHtml(req.body.password);
 
     const theUser = await User.getByEmail(theEmail);
-    const passwordIsCorrect = theUser.checkPassword(thePassword);
+    if (theUser) {
+        const passwordIsCorrect = theUser.checkPassword(thePassword);
+        console.log(passwordIsCorrect);
+    
+        if(passwordIsCorrect) {
+            req.session.user = theUser.id;
+            req.session.save(() => {
+                res.redirect('/');
+            });
+        }
+        else {
+            res.render('login', {
+                locals: {
+                    email: theEmail,
+                    message: 'Email or password is incorrect. Please try again.',
+                }
+            })
+        }
 
-    if(passwordIsCorrect) {
-        req.session.user = theUser.id;
-        req.session.save(() => {
-            res.redirect('/');
-        });
-    }
-    else {
+    } else {
         res.render('login', {
             locals: {
                 email: theEmail,

@@ -21,6 +21,10 @@ class User {
                     userData.email,
                     userData.password);
                 return aUser;
+            })
+            .catch(() => {
+                console.log("catchdasdasdsadad");
+                return null;
             });
     }
 

@@ -6,6 +6,6 @@ const {
     getAll
 } = require('../controllers/favorite');
 
-favoriteRoutes.get('/:id', getAll);
+favoriteRoutes.get('/', getAll);
 
 module.exports = favoriteRoutes;

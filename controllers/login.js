@@ -18,7 +18,10 @@ async function attemptLogin(req, res) {
     const passwordIsCorrect = theUser.checkPassword(thePassword);
 
     if(passwordIsCorrect) {
-        res.redirect('/');
+        req.session.user = theUser.id;
+        req.session.save(() => {
+            res.redirect('/');
+        });
     }
     else {
         res.render('user-login', {

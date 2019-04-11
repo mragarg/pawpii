@@ -10,6 +10,7 @@ const favoriteRouter = require('./routes/favorite')
 const loginRouter = require('./routes/login');
 
 const orgDogsRouter  =require('./routes/org-dogs');
+const stateRouter = require('./routes/state')
 
 
 const app = express();
@@ -64,6 +65,8 @@ app.use('/login', loginRouter);
 //Orgs-Dog Router
 app.use('/org-dogs', orgDogsRouter);
 
+//Org-State Router
+app.use('/state', stateRouter);
 // App Listen
 app.listen(PORT, () => {
     console.log(`Server is running on Port ${PORT}.`)

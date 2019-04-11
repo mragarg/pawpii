@@ -5,6 +5,7 @@ values
     ('Ashish', 'Garg', 'ashishgarg@gmail.com', '$2a$10$/AK6QzE4rnieUE.KwV7wN.5IIpgtylKUYReBIQSFtl4oZ/yzYhgm6'),
     ('Antonio', 'Garcia', 'antoniogarcia@gmail.com', '$2a$10$QMypfxh3UcMQeJU7SN0xXORNnkAsK9IJ3.yKqPEAQLkTtSPICZDge'),
     ('Test', 'Test', 'test@gmail.com', '$2a$10$6YXTE/PIZ7InHgMoRM2CLOkF7cJXq58yNoHNKSj3SVDmupbA7vzN.')
+
 ;
 
 

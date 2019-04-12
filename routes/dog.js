@@ -3,9 +3,11 @@ const Router = express.Router;
 const dogRoutes = Router();
 
 const {
-    getAll
+    getAll, statesPost
 } = require('../controllers/dog');
 
 dogRoutes.get('/', getAll);
+
+dogRoutes.post('/', statesPost);
 
 module.exports = dogRoutes;

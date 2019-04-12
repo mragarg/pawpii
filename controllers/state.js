@@ -4,8 +4,8 @@ const Organization = require('../models/organization');
 
 async function orgsByState(req, res) {
     console.log("test ************")
-    console.log(req.params.state);
-    const {state} = req.params;
+    console.log(req.body.value);
+    const {state} = req.body.name;
     const allOrgs = await Organization.retrieveInfoByState(state);
     console.log(allOrgs)
     res.render('orgs-by-state', {

@@ -3,12 +3,13 @@ const bcrypt = require('bcryptjs');
 
 class User {
 
-    constructor(id, first_name, last_name, email, password) {
+    constructor(id, first_name, last_name, email, password, org_id) {
         this.id = id;
         this.firstName = first_name;
         this.lastName = last_name;
         this.email = email;
         this.password = password;
+        this.orgId = org_id;
     }
     
     static getByEmail(email) {

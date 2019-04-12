@@ -42,8 +42,8 @@ async function addOrganization(req, res) {
 
     const addOrgan = await Organization.addOrganization(name, address, city, state, zip, phone, orgEmail, orgPassword, description, url);
     console.log(addOrgan);
-    const instanceOrgan = new Organization(addOrgan.id, addOrgan.name, addOrgan.address, addOrgan.city, addOrgan.state, addOrgan.zip, addOrgan.phone, addOrgan.email, addOrgan.password, addOrgan.description, addOrgan.website);
-    console.log(instanceOrgan);
+    // const instanceOrgan = new Organization(addOrgan.id, addOrgan.name, addOrgan.address, addOrgan.city, addOrgan.state, addOrgan.zip, addOrgan.phone, addOrgan.email, addOrgan.password, addOrgan.description, addOrgan.website);
+    // console.log(instanceOrgan);
 
 }
 

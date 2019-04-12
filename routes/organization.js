@@ -8,7 +8,7 @@ const {
     addDogDB
 } = require('../controllers/organization');
 
-organizationRoutes.get('/dog/:id', getAllDogs);
+organizationRoutes.get('/dogs/:id', getAllDogs);
 
 organizationRoutes.get('/add', addDogForm);
 

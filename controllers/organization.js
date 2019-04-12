@@ -15,10 +15,17 @@ async function getAllDogs(req, res) {
     });
 }
 
+function addDogForm(req, res) {
+    res.render('add-dog');
+    console.log("TEST *!$#!@#$!@#$*!@#$*!@#$*!@*#$!@*#$*!@#$*!@#*$!@*#$*E!@#*$!@*$*!@#$*");
+    console.log(req.session.user);
+    console.log("TEST *!$#!@#$!@#$*!@#$*!@#$*!@*#$!@*#$*!@#$*!@#*$!@*#$*E!@#*$!@*$*!@#$*");
+
+}
 
 
 
 module.exports = {
-    getAllDogs
-    
+    getAllDogs,
+    addDogForm
 }

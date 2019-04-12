@@ -3,14 +3,13 @@ const Router = express.Router;
 const organizationRoutes = Router();
 
 const {
-    getAllDogs
+    getAllDogs,
+    addDogForm
 } = require('../controllers/organization');
 
 organizationRoutes.get('/dog/:id', getAllDogs);
 
-organizationRoutes.get('/add', (req, res) => {
-    res.render('add-dog');
-});
+organizationRoutes.get('/add', addDogForm);
 
 organizationRoutes.post('/add', (req, res) => {
     res.send('you posted faceass');

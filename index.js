@@ -5,11 +5,12 @@ const es6Renderer = require('express-es6-template-engine');
 // Routers
 const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
-const favoriteRouter = require('./routes/favorite')
+const favoriteRouter = require('./routes/favorite');
 const loginRouter = require('./routes/login');
+
+const organizationRouter  =require('./routes/organization');
 const signupRouter = require('./routes/signup');
-const orgDogsRouter  =require('./routes/org-dogs');
-const stateRouter = require('./routes/state')
+const stateRouter = require('./routes/state');
 
 
 const app = express();
@@ -72,7 +73,7 @@ app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 
 //Orgs-Dog Router
-app.use('/org-dogs', orgDogsRouter);
+app.use('/organization', organizationRouter);
 
 //Org-State Router
 app.use('/state', stateRouter);

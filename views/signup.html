@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>Favorites</title>
+    <title>Sign Up</title>
 </head>
 <body>
     <!-- Navigation -->
@@ -42,7 +42,7 @@
                     <a class="nav-link" href="/favorites">Favorites</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Log in</a>
+                    <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/signup">Sign up</a>
@@ -51,15 +51,9 @@
             </div>
         </div>
     </nav>
-    <h1>Favorites</h1>
-    <div class="card-group">
-        ${
-            dogs.map((aDog) => {
-                return `<div class="card" style="width: 18rem;">
-                            <img src="${aDog.image_url}" class="card-img-top" alt="">
-                        </div>`
-            }).join('')
-        }
-    </div>
+    <h1>${message}</h1>
+
+    
+    
 </body>
 </html>

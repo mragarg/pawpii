@@ -3,7 +3,7 @@ const Router = express.Router;
 const stateRoutes = Router();
 
 const {
-    orgsByState, orgDogs
+    orgsByState
 } = require('../controllers/state');
 
 stateRoutes.get('/:state', orgsByState);

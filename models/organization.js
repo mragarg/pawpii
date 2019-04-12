@@ -90,10 +90,26 @@ class Organization {
         // })
     }
 
+
+
+    // Add Organization Table
+    static addOrganization(name, address, city, state, zip, phone, email, password, description, website) {
+        return db.one(`
+        insert into organizations 
+        (name, address, city, state, zip, phone, email, password, description, website)
+        values 
+        ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        returning id, name, address, city, state, zip, phone, email, password, description, website
+        `, [name, address, city, state, zip, phone, email, password, description, website])
+        .then((data) => {
+            console.log(data);
+            return data;
+        })
+    }
+
 }
 
 
 
 //Export
-
 module.exports = Organization

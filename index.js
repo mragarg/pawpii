@@ -6,10 +6,10 @@ const es6Renderer = require('express-es6-template-engine');
 const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
 const favoriteRouter = require('./routes/favorite')
-
 const loginRouter = require('./routes/login');
 
 const organizationRouter  =require('./routes/organization');
+const signupRouter = require('./routes/signup');
 const stateRouter = require('./routes/state')
 
 
@@ -61,6 +61,9 @@ app.use('/favorites', favoriteRouter);
 
 // LOGIN Router
 app.use('/login', loginRouter);
+
+// SIGNUP Router
+app.use('/signup', signupRouter);
 
 //Orgs-Dog Router
 app.use('/organization', organizationRouter);

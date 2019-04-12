@@ -14,6 +14,10 @@ async function getAll(req, res) {
     res.render('all-dogs', {
         locals: {
             dogs: dogsArray,
+            signup: 'Sign up',
+            login: 'Log in',
+            favorite: 'Favorite',
+            logout: 'Log out',
             orgs:  orgsInState
         }
     });
@@ -24,7 +28,36 @@ async function statesPost(req,res) {
     res.redirect(`/state/${state}`)
 }
 
+async function checkLogin(req, res) {
+    const dogsArray = await Dog.getAlldogs();
+    if (req.session.user) {
+        res.render('all-dogs', {
+            locals: {
+                dogs: dogsArray,
+                signup: 'd-none',
+                login: 'd-none',
+                favorite: 'Favorite',
+                logout: 'Log out'
+
+            }
+        });
+    } else {
+        res.render('all-dogs', {
+            locals: {
+                dogs: dogsArray,
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                logout: 'd-none'
+
+            }
+        });
+    }
+}
+
+
 module.exports = {
     getAll,
+    checkLogin,
     statesPost
 }

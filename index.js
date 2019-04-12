@@ -3,11 +3,12 @@ const express = require('express');
 const es6Renderer = require('express-es6-template-engine');
 
 // Routers
+const homeRouter = require('./routes/home');
 const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
 const favoriteRouter = require('./routes/favorite');
 const loginRouter = require('./routes/login');
-
+const aboutRouter = require('./routes/about');
 const organizationRouter  =require('./routes/organization');
 const signupRouter = require('./routes/signup');
 const stateRouter = require('./routes/state');
@@ -40,22 +41,19 @@ app.engine('html', es6Renderer);
 app.set('view engine', 'html');
 app.set('views', 'views');
 
-// GET Home
-app.get('/', (req, res) => {
-    res.render('home');
-});
-
-// ABOUT Router
-app.get('/about', (req, res) => {
-    res.render('about');
-});
 
 // LOGOUT
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
-        res.render('home');
-    });
+        res.redirect('/');
+    })
 })
+
+// HOME Router
+app.use('/', homeRouter);
+
+// ABOUT Router
+app.use('/about',aboutRouter);
 
 // USER Router
 app.use('/user', userRouter);

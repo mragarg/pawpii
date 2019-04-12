@@ -3,9 +3,10 @@ const Router = express.Router;
 const favoriteRoutes = Router();
 
 const {
-    getAll
+    getAll,
+    checkLogin
 } = require('../controllers/favorite');
 
-favoriteRoutes.get('/', getAll);
+favoriteRoutes.get('/', checkLogin, getAll);
 
 module.exports = favoriteRoutes;

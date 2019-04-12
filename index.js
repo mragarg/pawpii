@@ -7,7 +7,7 @@ const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
 const favoriteRouter = require('./routes/favorite')
 const loginRouter = require('./routes/login');
-const singupRouter = require('./routes/signup');
+const signupRouter = require('./routes/signup');
 const orgDogsRouter  =require('./routes/org-dogs');
 const stateRouter = require('./routes/state')
 
@@ -49,6 +49,13 @@ app.get('/about', (req, res) => {
     res.render('about');
 });
 
+// LOGOUT
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.render('home');
+    });
+})
+
 // USER Router
 app.use('/user', userRouter);
 
@@ -62,7 +69,7 @@ app.use('/favorites', favoriteRouter);
 app.use('/login', loginRouter);
 
 // SIGNUP Router
-app.use('/signup', singupRouter);
+app.use('/signup', signupRouter);
 
 //Orgs-Dog Router
 app.use('/org-dogs', orgDogsRouter);

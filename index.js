@@ -7,8 +7,9 @@ const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
 const favoriteRouter = require('./routes/favorite')
 const loginRouter = require('./routes/login');
-const singupRouter = require('./routes/signup');
-const orgDogsRouter  =require('./routes/org-dogs');
+
+const organizationRouter  =require('./routes/organization');
+const signupRouter = require('./routes/signup');
 const stateRouter = require('./routes/state')
 
 
@@ -62,10 +63,10 @@ app.use('/favorites', favoriteRouter);
 app.use('/login', loginRouter);
 
 // SIGNUP Router
-app.use('/signup', singupRouter);
+app.use('/signup', signupRouter);
 
 //Orgs-Dog Router
-app.use('/org-dogs', orgDogsRouter);
+app.use('/organization', organizationRouter);
 
 //Org-State Router
 app.use('/state', stateRouter);

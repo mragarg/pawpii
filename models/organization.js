@@ -32,7 +32,7 @@ class Organization {
     // needs to retrieve all dogs by org ID 
     static retrieveDogsById(id) {
         return db.any(`
-        select dog_name, breed, age, dogs.description, image_url, org_id from dogs 
+        select dogs.name, breed, age, dogs.description, image_url, org_id from dogs 
         inner join organizations 
         on dogs.org_id= organizations.id
         where organizations.id=$1`,[id]

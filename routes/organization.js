@@ -8,9 +8,9 @@ const {
 
 organizationRoutes.get('/dogs/:id', getAllDogs);
 
-// organizationRoutes.get('/add', (req, res) => {
-//     res.render('add-dog');
-// });
+organizationRoutes.get('/add', (req, res) => {
+    res.render('add-dog');
+});
 
 organizationRoutes.post('/add', (req, res) => {
     res.send('you posted faceass');

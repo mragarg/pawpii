@@ -5,12 +5,12 @@ const es6Renderer = require('express-es6-template-engine');
 // Routers
 const userRouter = require('./routes/user');
 const dogRouter = require('./routes/dog');
-const favoriteRouter = require('./routes/favorite')
+const favoriteRouter = require('./routes/favorite');
 const loginRouter = require('./routes/login');
 
 const organizationRouter  =require('./routes/organization');
 const signupRouter = require('./routes/signup');
-const stateRouter = require('./routes/state')
+const stateRouter = require('./routes/state');
 
 
 const app = express();
@@ -49,6 +49,13 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about');
 });
+
+// LOGOUT
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.render('home');
+    });
+})
 
 // USER Router
 app.use('/user', userRouter);

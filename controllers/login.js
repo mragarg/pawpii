@@ -2,12 +2,16 @@ const User = require('../models/user');
 const escapeHtml = require('../utils');
 
 function getLoginPage(req, res) {
-    res.render('login', {
-        locals: {
-            email: '',
-            message: 'Please login.',
-        }
-    });
+    if (!req.session.user) {
+        res.render('login', {
+            locals: {
+                email: '',
+                message: 'Please login.',
+            }
+        });
+    } else {
+        res.redirect('/');
+    }
 }
 
 async function attemptLogin(req, res) {

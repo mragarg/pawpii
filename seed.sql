@@ -1,20 +1,18 @@
-insert into users
-    (first_name, last_name, email, password)
-values
-    ('Seil', 'Cho', 'seilcho@gmail.com', '$2a$10$Y4eDcr2ogd0DLOcHibF0GOmdZpjLnY0183MER87QnJLZy7/FYyZ5W'), --password
-    ('Ashish', 'Garg', 'ashishgarg@gmail.com', '$2a$10$/AK6QzE4rnieUE.KwV7wN.5IIpgtylKUYReBIQSFtl4oZ/yzYhgm6'),
-    ('Antonio', 'Garcia', 'antoniogarcia@gmail.com', '$2a$10$QMypfxh3UcMQeJU7SN0xXORNnkAsK9IJ3.yKqPEAQLkTtSPICZDge'),
-    ('Test', 'Test', 'test@gmail.com', '$2a$10$6YXTE/PIZ7InHgMoRM2CLOkF7cJXq58yNoHNKSj3SVDmupbA7vzN.')
-
-;
-
-
 insert into organizations
     (name, address, city, state, zip, phone, email, password, description, website)
 VALUES
     ('Atlanta Humane Society', '981 Howell Mill Road NW', 'Atlanta', 'GA', '30318', '404.875.5331', 'hmc@gmail.org', '$2a$10$zAOOmDzisCl0/02g7Fmnc.j7vFmQMBIy3XxEVftZg7VXchMVaJADC', 'Atlanta Humane Society (AHS) is a 501(c)3 tax exempt nonprofit (IRS Tax ID# 58-0685900) and one of the oldest private charitable organizations in Atlanta, founded in 1873 as a result of an earlier visit to the city by Robert E. Lee. The animal charity was originally chartered to protect women, children, and animals and remained a child protection and animal welfare society for 79 years. AHS, now a widely recognized pet adoption center, vet center, and educational program provider, was originally located on Marietta Street and moved to its present location at 981 Howell Mill Road in the 1930s. The Alpharetta campus at 1565 Mansell Road was opened in 2011.','https://atlantahumane.org/adopt/dogs/howell-mill/'),
-    ('Citizens for Animal Protection', '17555 Katy Freeway', 'Houston', 'Texas', '77094', '281.497.0591', 'cap@gmail.org', '$2a$10$zAOOmDzisCl0/02g7Fmnc.j7vFmQMBIy3XxEVftZg7VXchMVaJADC', 'Citizens for Animal Protection is a non-profit organization, founded in 1972, which shelters, rescues and places homeless animals for adoption with loving families. CAP advocates respect and compassion for animal life and provides humane education to help prevent cruelty to animals.','http://www.cap4pets.org/'),
+    ('Citizens for Animal Protection', '17555 Katy Freeway', 'Houston', 'TX', '77094', '281.497.0591', 'cap@gmail.org', '$2a$10$zAOOmDzisCl0/02g7Fmnc.j7vFmQMBIy3XxEVftZg7VXchMVaJADC', 'Citizens for Animal Protection is a non-profit organization, founded in 1972, which shelters, rescues and places homeless animals for adoption with loving families. CAP advocates respect and compassion for animal life and provides humane education to help prevent cruelty to animals.','http://www.cap4pets.org/'),
     ('Rescue Dogs Rock', 'Rescue Dogs Rock NYC PO Box 101 Gracie Station', 'Newyork', 'NY', '10028', '281.497.0591', 'rdr@hotmail.org', '$2a$10$zAOOmDzisCl0/02g7Fmnc.j7vFmQMBIy3XxEVftZg7VXchMVaJADC', 'Our mission is to raise awareness of the ever growing plight of homeless animals in this country, both in shelters and those dumped on our streets. Way too many amazing animals are euthanized every single day simply because they are homeless.','https://rescuedogsrocknyc.org/')
+;
+
+insert into users
+    (first_name, last_name, email, password, org_id)
+values
+    ('Seil', 'Cho', 'seilcho@gmail.com', '$2a$10$Y4eDcr2ogd0DLOcHibF0GOmdZpjLnY0183MER87QnJLZy7/FYyZ5W', NULL), --password
+    ('Ashish', 'Garg', 'ashishgarg@gmail.com', '$2a$10$/AK6QzE4rnieUE.KwV7wN.5IIpgtylKUYReBIQSFtl4oZ/yzYhgm6', 1),
+    ('Antonio', 'Garcia', 'antoniogarcia@gmail.com', '$2a$10$QMypfxh3UcMQeJU7SN0xXORNnkAsK9IJ3.yKqPEAQLkTtSPICZDge', 2),
+    ('Test', 'Test', 'test@gmail.com', '$2a$10$6YXTE/PIZ7InHgMoRM2CLOkF7cJXq58yNoHNKSj3SVDmupbA7vzN.', 3)
 ;
 
 insert into dogs 

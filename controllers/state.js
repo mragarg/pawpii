@@ -3,11 +3,11 @@ const Organization = require('../models/organization');
 
 
 async function orgsByState(req, res) {
-    console.log("test ************")
-    console.log(req.body.value);
-    const {state} = req.body.name;
+    console.log("test $$$$$$$$$$$$$$")
+
+    const {state} = req.params;
+    console.log(state);
     const allOrgs = await Organization.retrieveInfoByState(state);
-    console.log(allOrgs)
     res.render('orgs-by-state', {
         locals: {
             orgs: allOrgs

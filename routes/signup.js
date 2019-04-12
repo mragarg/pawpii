@@ -4,11 +4,13 @@ const signupRoutes = Router();
 
 const {
     test,
-    addUser
+    addUser,
+    addOrganization
 } = require('../controllers/signup');
 
 signupRoutes.get('/', test);
 signupRoutes.post('/', addUser);
+signupRoutes.post('/organization', addOrganization)
 
 
 module.exports = signupRoutes;

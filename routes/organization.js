@@ -4,15 +4,14 @@ const organizationRoutes = Router();
 
 const {
     getAllDogs,
-    addDogForm
+    addDogForm,
+    addDogDB
 } = require('../controllers/organization');
 
 organizationRoutes.get('/dog/:id', getAllDogs);
 
 organizationRoutes.get('/add', addDogForm);
 
-organizationRoutes.post('/add', (req, res) => {
-    res.send('you posted faceass');
-});
+organizationRoutes.post('/add', addDogDB);
 
 module.exports = organizationRoutes; 

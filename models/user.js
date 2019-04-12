@@ -93,7 +93,8 @@ class User {
                     userData.first_name,
                     userData.last_name,
                     userData.email,
-                    userData.password
+                    userData.password,
+                    userData.org_id
                     );
                 return userInstance;
             })

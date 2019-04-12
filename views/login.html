@@ -14,8 +14,61 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Login</title>
+    <style type="text/css">
+      .login-form {
+          width: 340px;
+          margin: 30px auto;
+      }
+      .login-form form {
+          margin-bottom: 15px;
+          background: #f7f7f7;
+          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+          padding: 30px;
+      }
+      .login-form h2 {
+          margin: 0 0 15px;
+      }
+      .login-form .hint-text {
+          color: #777;
+          padding-bottom: 15px;
+          text-align: center;
+      }
+      .form-control, .btn {
+          min-height: 38px;
+          border-radius: 2px;
+      }
+      .login-btn {        
+          font-size: 15px;
+          font-weight: bold;
+      }
+      .or-seperator {
+          margin: 20px 0 10px;
+          text-align: center;
+          border-top: 1px solid #ccc;
+      }
+      .or-seperator i {
+          padding: 0 10px;
+          background: #f7f7f7;
+          position: relative;
+          top: -11px;
+          z-index: 1;
+      }
+      .social-btn .btn {
+          margin: 10px 0;
+          font-size: 15px;
+          text-align: left; 
+          line-height: 24px;       
+      }
+      .social-btn .btn i {
+          float: left;
+          margin: 4px 15px  0 5px;
+          min-width: 15px;
+      }
+      .input-group-addon .fa{
+          font-size: 18px;
+      }
+  </style>
 </head>
-
 <body>
       <!-- Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark static-top">
@@ -41,9 +94,12 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/favorites">Favorites</a>
-              </li>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/login">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Sign up</a>
                 </li>
                 </ul>
             </div>
@@ -53,44 +109,40 @@
     <form
           action="/login"
           method="POST"
-          class="p-5"
+  
     >
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input value ="${email}" type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-10">
-            <input value="" type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
-          </div>
-        </div>
-        <fieldset class="form-group">
-          <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Select</legend>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                <label class="form-check-label" for="gridRadios1">
-                  User
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                <label class="form-check-label" for="gridRadios2">
-                  Organization
-                </label>
-              </div>
+    <div class="login-form">
+        
+            <h2 class="text-center">Log in</h2>		
+            <div class="text-center social-btn">
+                <a href="#" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Log in with <b>Facebook</b></a>
+                <a href="#" class="btn btn-info btn-block"><i class="fa fa-twitter"></i> Log in with <b>Twitter</b></a>
+                <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Log in with <b>Google</b></a>
             </div>
-          </div>
-        </fieldset>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Login</button>
-          </div>
-        </div>
+            <div class="or-seperator"><i>or</i></div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input value ="${email}" type="email" class="form-control" name="email" placeholder="Username" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input value="" type="password" class="form-control" name="password" placeholder="Password" required="required">
+                </div>
+            </div>        
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block login-btn">Log in</button>
+            </div>
+            <div class="clearfix">
+                <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                <a href="#" class="pull-right text-success">Forgot Password?</a>
+            </div>  
+            
+        </form>
+        <div class="hint-text small">Don't have an account? <a href="/signup" class="text-success">Register Now!</a></div>
+    </div>
 
       </form>
 </body>

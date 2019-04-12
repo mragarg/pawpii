@@ -29,14 +29,14 @@ class User {
     }
 
     // adds a user
-    static add(userData) {
+    static add(firstName, lastName, email, password) {
         return db.one(`
         insert into users 
         (first_name, last_name, email, password)
         values 
         ($1, $2, $3, $4)
-        returning id, first_name, last_name
-        `, [userData.first_name, userData.last_name, userData.email, userData.password])
+        returning id, first_name, last_name, email, password
+        `, [firstName, lastName, email, password])
         .then((data) => {
             return data;
         })

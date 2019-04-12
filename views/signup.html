@@ -110,8 +110,7 @@
     </nav>
     <h1>${message}</h1>
     
-    <form>
- <section class="container py-4">
+<section class="container py-4">
         <div class="row">
             <div class="col-md-12">
                 <ul id="tabsJustified" class="nav nav-tabs">
@@ -243,6 +242,10 @@
                                     </div>
                                     </div>
                                 </div>
+                    <form
+                        action='/signup'
+                        method="POST"
+                    >
                     <div id="user" class="tab-pane fade active show">
                             <div class="login-form">
         
@@ -250,13 +253,13 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input value ="" type="text" class="form-control" name="first-name" placeholder="First name" required="required">
+                                            <input value ="" type="text" class="form-control" name="firstName" placeholder="First name" required="required">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input value ="" type="text" class="form-control" name="last-name" placeholder="Last name" required="required">
+                                            <input value ="" type="text" class="form-control" name="lastName" placeholder="Last name" required="required">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -276,6 +279,7 @@
                                     </div>
                                     </div>
                                 </div>
+                            </form>
                     </div>
                     
                 </div>

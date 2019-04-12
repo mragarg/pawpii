@@ -41,7 +41,7 @@ async function addOrganization(req, res) {
     const url = escape(req.body.url);
 
     // Create new Organization
-    const addOrgan = await Organization.addOrganization(name, address, city, state, zip, phone, orgEmail, orgPassword, description, url);
+    const addOrgan = await Organization.addOrganization(name, address, city, state, zip, phone, orgEmail, 'orgPassword', description, url); // Prevents showing password unhashed
     console.log(addOrgan);
 
     // This will create an Organization Instance
@@ -51,6 +51,15 @@ async function addOrganization(req, res) {
     // Create new User
     const orgUser = await User.add(instanceOrgan.name, instanceOrgan.name, instanceOrgan.email, instanceOrgan.password, instanceOrgan.id);
     console.log(orgUser);
+    
+    // User Instance
+    const instanceUserOrg = new User(orgUser.id, orgUser.first_name, orgUser.last_name, orgUser.email, orgUser.password, orgUser.org_id);
+    console.log(instanceUserOrg);
+
+    // Hash Pass
+    await instanceUserOrg.setPassword(orgPassword);
+    await instanceUserOrg.save();
+
 
     res.redirect('/');
 }

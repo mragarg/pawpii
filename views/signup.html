@@ -120,6 +120,10 @@
                 <br>
                 <div id="tabsJustifiedContent" class="tab-content">
                     <div id="organization" class="tab-pane fade">
+                            <form
+                            action='/signup'
+                            method="POST"
+                        >    
                             <div class="login-form">
         
                                     <h2 class="text-center">Organization</h2>
@@ -242,12 +246,14 @@
                                     </div>
                                     </div>
                                 </div>
-                    <form
-                        action='/signup'
-                        method="POST"
-                    >
+                            </form>
+                    
                     <div id="user" class="tab-pane fade active show">
-                            <div class="login-form">
+                            <form
+                            action='/signup'
+                            method="POST"
+                        >    
+                        <div class="login-form">
         
                                     <h2 class="text-center">User</h2>
                                     <div class="form-group">
@@ -278,8 +284,9 @@
                                         <button type="submit" class="btn btn-success btn-block login-btn">Sign up</button>
                                     </div>
                                     </div>
+                                    </form>
                                 </div>
-                            </form>
+                            
                     </div>
                     
                 </div>

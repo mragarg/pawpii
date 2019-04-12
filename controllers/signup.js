@@ -2,14 +2,6 @@ const User = require('../models/user');
 const Organization = require('../models/organization');
 const escape = require('../utils');
 
-async function test(req, res) {
-    res.render('signup', {
-        locals: {
-            message: "Sign up please."
-        }
-    });
-}
-
 async function addUser(req, res) {
     const firstName = escape(req.body.firstName);
     const lastName = escape(req.body.lastName);
@@ -26,9 +18,34 @@ async function addUser(req, res) {
 
 
     res.redirect('/');
+
+}
+
+function checkLogin(req, res) {
+    if (req.session.user) {
+        res.render('signup', {
+            locals: {
+                signup: 'd-none',
+                login: 'd-none',
+                favorite: 'Favorite',
+                logout: 'Log out'
+
+            }
+        });
+    } else {
+        res.render('signup', {
+            locals: {
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                logout: 'd-none'
+
+            }
+        });
+    }
 }
 
 module.exports = {
-    test,
-    addUser
+    addUser,
+    checkLogin
 }

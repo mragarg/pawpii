@@ -3,11 +3,11 @@ const Router = express.Router;
 const signupRoutes = Router();
 
 const {
-    test,
-    addUser
+    addUser,
+    checkLogin
 } = require('../controllers/signup');
 
-signupRoutes.get('/', test);
+signupRoutes.get('/', checkLogin);
 signupRoutes.post('/', addUser);
 
 

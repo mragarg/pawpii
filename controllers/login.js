@@ -2,16 +2,16 @@ const User = require('../models/user');
 const escapeHtml = require('../utils');
 
 function getLoginPage(req, res) {
-    if (!req.session.user) {
         res.render('login', {
             locals: {
                 email: '',
                 message: 'Please login.',
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                logout: 'd-none'
             }
         });
-    } else {
-        res.redirect('/');
-    }
 }
 
 async function attemptLogin(req, res) {
@@ -35,6 +35,10 @@ async function attemptLogin(req, res) {
                 locals: {
                     email: theEmail,
                     message: 'Password is incorrect. Please try again.',
+                    signup: 'Sign up',
+                    login: 'Log in',
+                    favorite: 'd-none',
+                    logout: 'd-none'
                 }
             })
         }
@@ -44,13 +48,46 @@ async function attemptLogin(req, res) {
             locals: {
                 email: theEmail,
                 message: 'Email is incorrect. Please try again.',
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                logout: 'd-none'
             }
         })
     }
 
 }
 
+function checkLogin(req, res) {
+    if (req.session.user) {
+        res.render('login', {
+            locals: {
+                email: '',
+                message: 'Please log in',
+                signup: 'd-none',
+                login: 'd-none',
+                favorite: 'Favorite',
+                logout: 'Log out'
+
+            }
+        });
+    } else {
+        res.render('login', {
+            locals: {
+                email: '',
+                message: 'Please log in',
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                logout: 'd-none'
+
+            }
+        });
+    }
+}
+
 module.exports = {
     getLoginPage,
-    attemptLogin
+    attemptLogin,
+    checkLogin
 }

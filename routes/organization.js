@@ -1,0 +1,15 @@
+const express = require('express');
+const Router = express.Router;
+const organizationRoutes = Router();
+
+const {
+    getAllDogs
+} = require('../controllers/organization');
+
+organizationRoutes.get('/dog/:id', getAllDogs);
+
+organizationRoutes.get('/add', (req, res) => {
+    res.render('add-dog');
+});
+
+module.exports = organizationRoutes; 

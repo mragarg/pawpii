@@ -50,21 +50,16 @@
         </nav>
     
         <h1>Delete Dog</h1>
-
-    <form 
-    action="/organization/delete"
-    method="POST"
-    >
-        <div class="input-group px-5">
-            <select class="custom-select" name="selectDelete" id="inventoryID" aria-label="Select Inventory ID from Dropdown">
-                <option selected>Choose Dog</option>
-                ${options}
-            </select>
-            <div class="input-group-append">
-                <button class="btn btn-outline-danger" type="submit">Delete</button>
-            </div>
+        <div class="card-group">
+            ${
+                dogs.map((aDog) => {
+                    return `<div class="card" style="width: 18rem;">
+                                <img src="${aDog.image_url}" class="card-img-top" alt="">
+                            </div>`
+                }).join('')
+            }
         </div>
-    </form>
+  
 
 </body>
 </html>

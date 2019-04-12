@@ -17,7 +17,7 @@ async function getAllDogs(req, res) {
 }
 
 function addDogForm(req, res) {
-    res.render('add-dog');
+    res.render('add-dog'); 
 }
 
 async function addDogDB(req, res) {
@@ -40,8 +40,29 @@ async function addDogDB(req, res) {
     }
 }
 
-function deleteDogForm(req, res) {
-    res.render('delete-dog');
+async function deleteDogForm(req, res) {
+    const userInstance = await User.getById(req.session.user);
+    // console.log(userInstance);
+    // console.log(userInstance.orgId);
+    if(userInstance.orgId === null) {
+        res.send("Access Denied! User is not an organization.");
+    }
+    else{
+        console.log('Adding Dog');
+        // await userInstance.addDog(req.body.dogName, req.body.dogBreed, req.body.dogAge, req.body.dogDescription, req.body.dogImg);
+        console.log('ADDED :)  Dog');
+    }
+
+    // const {id} = req.params
+    const dogsArray = await Organization.retrieveDogsById(req.session.user);
+    const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
+    res.render('delete-dog', {
+        locals: {
+            dogs: dogsArray,
+            org: orgInfo
+
+        }
+    });
 }
 
 

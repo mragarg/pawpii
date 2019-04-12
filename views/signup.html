@@ -14,6 +14,60 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Sign Up</title>
+    <style type="text/css">
+        .login-form {
+            width: 340px;
+            margin: 30px auto;
+        }
+        .login-form form {
+            margin-bottom: 15px;
+            background: #f7f7f7;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+        .login-form .hint-text {
+            color: #777;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        .form-control, .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+        .login-btn {        
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .or-seperator {
+            margin: 20px 0 10px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+        .or-seperator i {
+            padding: 0 10px;
+            background: #f7f7f7;
+            position: relative;
+            top: -11px;
+            z-index: 1;
+        }
+        .social-btn .btn {
+            margin: 10px 0;
+            font-size: 15px;
+            text-align: left; 
+            line-height: 24px;       
+        }
+        .social-btn .btn i {
+            float: left;
+            margin: 4px 15px  0 5px;
+            min-width: 15px;
+        }
+        .input-group-addon .fa{
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -52,8 +106,87 @@
         </div>
     </nav>
     <h1>${message}</h1>
-
     
+    <form>
+ <section class="container py-4">
+        <div class="row">
+            <div class="col-md-12">
+                <ul id="tabsJustified" class="nav nav-tabs">
+                    <li class="nav-item"><a href="" data-target="#organization" data-toggle="tab" class="nav-link small text-uppercase">Organization</a></li>
+                    <li class="nav-item"><a href="" data-target="#user" data-toggle="tab" class="nav-link small text-uppercase active">User</a></li>
+                </ul>
+                <br>
+                <div id="tabsJustifiedContent" class="tab-content">
+                    <div id="organization" class="tab-pane fade">
+                            <div class="login-form">
+        
+                                    <h2 class="text-center">Organization</h2>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input value ="" type="org-name" class="form-control" name="org-name" placeholder="Name" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input value="" type="password" class="form-control" name="password" placeholder="Password" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                <input value ="" type="email" class="form-control" name="email" placeholder="Username" required="required">
+                                            </div>
+                                        </div>        
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success btn-block login-btn">Sign up</button>
+                                    </div>
+                                    </div>
+                                </div>
+                    <div id="user" class="tab-pane fade active show">
+                            <div class="login-form">
+        
+                                    <h2 class="text-center">User</h2>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input value ="" type="email" class="form-control" name="email" placeholder="Username" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input value="" type="password" class="form-control" name="password" placeholder="Password" required="required">
+                                        </div>
+                                    </div>        
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success btn-block login-btn">Sign up</button>
+                                    </div>
+                                    </div>
+                                </div>
+                    </div>
+                    
+                </div>
+            </div>
+    </section>
+    </form>
+
+    <!-- <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li><a data-toggle="tab" href="#messages">Menu 1</a></li>
+                <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
+              </ul>
+
+              
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                  <form class="form" action="##" method="post" id="registrationForm">
+                      <div class="form-group"> -->
+                          
+                   
     
 </body>
 </html>

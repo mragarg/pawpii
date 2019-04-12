@@ -1,5 +1,3 @@
-
-
 create table organizations (
     id serial primary key,
     name varchar(200),
@@ -22,6 +20,7 @@ create table users (
     password varchar(500),
     org_id integer references organizations(id)
 );
+
 create table dogs (
     id serial primary key,
     name varchar(200),

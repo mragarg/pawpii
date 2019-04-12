@@ -1,12 +1,3 @@
-create table users (
-    id serial primary key,
-    first_name varchar(100),
-    last_name varchar(100),
-    email varchar(500),
-    password varchar(500)
-);
-
-
 create table organizations (
     id serial primary key,
     name varchar(200),
@@ -19,6 +10,15 @@ create table organizations (
     password varchar(500),
     description varchar(8000),
     website varchar(8000)
+);
+
+create table users (
+    id serial primary key,
+    first_name varchar(100),
+    last_name varchar(100),
+    email varchar(500),
+    password varchar(500),
+    org_id integer references organizations(id)
 );
 
 create table dogs (

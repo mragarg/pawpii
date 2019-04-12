@@ -3,12 +3,13 @@ const bcrypt = require('bcryptjs');
 
 class User {
 
-    constructor(id, first_name, last_name, email, password) {
+    constructor(id, first_name, last_name, email, password, org_id) {
         this.id = id;
         this.firstName = first_name;
         this.lastName = last_name;
         this.email = email;
         this.password = password;
+        this.orgId = org_id;
     }
     
     static getByEmail(email) {
@@ -29,14 +30,14 @@ class User {
     }
 
     // adds a user
-    static add(firstName, lastName, email, password) {
+    static add(firstName, lastName, email, password, orgId) {
         return db.one(`
         insert into users 
-        (first_name, last_name, email, password)
+        (first_name, last_name, email, password, org_id)
         values 
-        ($1, $2, $3, $4)
-        returning id, first_name, last_name, email, password
-        `, [firstName, lastName, email, password])
+        ($1, $2, $3, $4, $5)
+        returning id, first_name, last_name, email, password, org_id
+        `, [firstName, lastName, email, password, orgId])
         .then((data) => {
             return data;
         })
@@ -92,10 +93,24 @@ class User {
                     userData.first_name,
                     userData.last_name,
                     userData.email,
-                    userData.password
+                    userData.password,
+                    userData.org_id
                     );
                 return userInstance;
             })
+    }
+
+    addDog(name, breed, age, description, image){
+        return db.one(`
+        insert into dogs 
+        (name, breed, age, description, image_url, org_id)
+        values 
+        ($1, $2, $3, $4, $5, $6)
+        returning name, breed, age, description, image_url, org_id
+        `, [name, breed, age, description, image, this.orgId])
+        .then((data) => {
+            return data;
+        })
     }
 
 }

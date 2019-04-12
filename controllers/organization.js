@@ -38,13 +38,16 @@ async function addDogDB(req, res) {
         await userInstance.addDog(req.body.dogName, req.body.dogBreed, req.body.dogAge, req.body.dogDescription, req.body.dogImg);
         console.log('ADDED :)  Dog');
     }
-
 }
 
+function deleteDogForm(req, res) {
+    res.render('delete-dog');
+}
 
 
 module.exports = {
     getAllDogs,
     addDogForm,
-    addDogDB
+    addDogDB,
+    deleteDogForm
 }

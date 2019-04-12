@@ -52,6 +52,7 @@ async function addOrganization(req, res) {
     const orgUser = await User.add(instanceOrgan.name, instanceOrgan.name, instanceOrgan.email, instanceOrgan.password, instanceOrgan.id);
     console.log(orgUser);
 
+    res.redirect('/');
 }
 
 module.exports = {

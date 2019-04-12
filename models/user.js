@@ -93,10 +93,24 @@ class User {
                     userData.first_name,
                     userData.last_name,
                     userData.email,
-                    userData.password
+                    userData.password,
+                    userData.org_id
                     );
                 return userInstance;
             })
+    }
+
+    addDog(name, breed, age, description, image){
+        return db.one(`
+        insert into dogs 
+        (name, breed, age, description, image_url, org_id)
+        values 
+        ($1, $2, $3, $4, $5, $6)
+        returning name, breed, age, description, image_url, org_id
+        `, [name, breed, age, description, image, this.orgId])
+        .then((data) => {
+            return data;
+        })
     }
 
 }

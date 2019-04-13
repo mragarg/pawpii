@@ -1,7 +1,39 @@
 const User = require('../models/user');
 const escapeHtml = require('../utils');
 
-function getLoginPage(req, res) {
+async function getLoginPage(req, res) {
+    if (req.session.user) {
+        const userInstance = await User.getById(req.session.user);
+        if (userInstance.orgId) {
+            res.render('login', {
+                locals: {
+                    email: '',
+                    message: 'Please login.',
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'd-none',
+                    ad: 'Add / Delete',
+                    dogs: 'Current dogs',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        } else if (userInstance.orgId === null) {
+            res.render('login', {
+                locals: {
+                    email: '',
+                    message: 'Please login.',
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'Favorite',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        }
+    } else {
         res.render('login', {
             locals: {
                 email: '',
@@ -9,9 +41,13 @@ function getLoginPage(req, res) {
                 signup: 'Sign up',
                 login: 'Log in',
                 favorite: 'd-none',
-                logout: 'd-none'
+                ad: 'd-none',
+                dogs: 'd-none',
+                logout: 'd-none',
+                id: ''
             }
         });
+    }
 }
 
 async function attemptLogin(req, res) {
@@ -38,7 +74,10 @@ async function attemptLogin(req, res) {
                     signup: 'Sign up',
                     login: 'Log in',
                     favorite: 'd-none',
-                    logout: 'd-none'
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'd-none',
+                    id: ''
                 }
             })
         }
@@ -51,43 +90,17 @@ async function attemptLogin(req, res) {
                 signup: 'Sign up',
                 login: 'Log in',
                 favorite: 'd-none',
-                logout: 'd-none'
+                ad: 'd-none',
+                dogs: 'd-none',
+                logout: 'd-none',
+                id: ''
             }
         })
     }
 
 }
 
-function checkLogin(req, res) {
-    if (req.session.user) {
-        res.render('login', {
-            locals: {
-                email: '',
-                message: 'Please log in',
-                signup: 'd-none',
-                login: 'd-none',
-                favorite: 'Favorite',
-                logout: 'Log out'
-
-            }
-        });
-    } else {
-        res.render('login', {
-            locals: {
-                email: '',
-                message: 'Please log in',
-                signup: 'Sign up',
-                login: 'Log in',
-                favorite: 'd-none',
-                logout: 'd-none'
-
-            }
-        });
-    }
-}
-
 module.exports = {
     getLoginPage,
-    attemptLogin,
-    checkLogin
+    attemptLogin
 }

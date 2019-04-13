@@ -7,17 +7,99 @@ async function getAllDogs(req, res) {
     const orgInfo = await Organization.retrieveOrgInfo(id);
     console.log(orgInfo);
     console.log('*******************');
-
-    res.render('org-dogs', {
-        locals: {
-            dogs: dogsArray,
-            orgs: orgInfo
+    
+    if (req.session.user) {
+        const userInstance = await User.getById(req.session.user);
+        if (userInstance.orgId) {
+            res.render('org-dogs', {
+                locals: {
+                    dogsA: dogsArray,
+                    orgs: orgInfo,
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'd-none',
+                    ad: 'Add / Delete',
+                    dogs: 'Current dogs',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        } else if (userInstance.orgId === null) {
+            res.render('org-dogs', {
+                locals: {
+                    dogsA: dogsArray,
+                    orgs: orgInfo,
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'Favorite',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
         }
-    });
+    } else {
+        res.render('org-dogs', {
+            locals: {
+                dogsA: dogsArray,
+                orgs: orgInfo,
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                ad: 'd-none',
+                dogs: 'd-none',
+                logout: 'd-none',
+                id: ''
+            }
+        });
+    }
 }
 
-function addDogForm(req, res) {
-    res.render('add-dog');
+async function addDogForm(req, res) {
+    if (req.session.user) {
+        const userInstance = await User.getById(req.session.user);
+        if (userInstance.orgId) {
+            res.render('add-dog', {
+                locals: {
+                    message: 'About page.',
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'd-none',
+                    ad: 'Add / Delete',
+                    dogs: 'Current dogs',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        } else if (userInstance.orgId === null) {
+            res.render('add-dog', {
+                locals: {
+                    message: 'About page.',
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'Favorite',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        }
+    } else {
+        res.render('add-dog', {
+            locals: {
+                message: 'About page.',
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                ad: 'd-none',
+                dogs: 'd-none',
+                logout: 'd-none',
+                id: ''
+            }
+        });
+    }
 }
 
 async function addDogDB(req, res) {
@@ -41,8 +123,47 @@ async function addDogDB(req, res) {
     }
 }
 
-function deleteDogForm(req, res) {
-    res.render('delete-dog');
+async function deleteDogForm(req, res) {
+    if (req.session.user) {
+        const userInstance = await User.getById(req.session.user);
+        if (userInstance.orgId) {
+            res.render('delete-dog', {
+                locals: {
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'd-none',
+                    ad: 'Add / Delete',
+                    dogs: 'Current dogs',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        } else if (userInstance.orgId === null) {
+            res.render('delete-dog', {
+                locals: {
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'Favorite',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        }
+    } else {
+        res.render('delete-dog', {
+            locals: {
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                ad: 'd-none',
+                dogs: 'd-none',
+                logout: 'd-none',
+                id: ''
+            }
+        });
+    }
 }
 
 

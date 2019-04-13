@@ -51,7 +51,7 @@
     
         <h1>Add Dog</h1>
         <form 
-        action="/organization/add"
+        action="/organization/add-delete"
         method="POST"
         class="mx-5"
     >
@@ -82,7 +82,29 @@
             
             <button type="submit" class="btn btn-outline-success mt-3">Add Dog</button>
 
-    </form>
+        </form>
+            <h1>Delete Dog</h1>
+            <div class="card-group">
+                ${
+                    dogs.map((aDog) => {
+                        return `
+                        <form
+                                    action="/organization/add-delete/${aDog.id}"
+                                    method="GET"      
+                        >
+                        <div class="card" style="width: 18rem;" id=${aDog.id}>
+                                    <img src="${aDog.image_url}" class="card-img-top" alt="" >
+                                </div>
+                                <button type="submit" class="btn btn-primary">Delete</button>
+                                </form>
+                          `
+                    }).join('')
+                }
+            </div>
+
+
+
+
 
 </body>
 </html>

@@ -4,9 +4,8 @@ const favoriteRoutes = Router();
 
 const {
     getAll,
-    checkLogin
 } = require('../controllers/favorite');
 
-favoriteRoutes.get('/', checkLogin, getAll);
+favoriteRoutes.get('/', getAll);
 
 module.exports = favoriteRoutes;

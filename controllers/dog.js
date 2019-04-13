@@ -1,5 +1,6 @@
 const Dog = require('../models/dog');
-const Organization = require('../models/organization')
+const Organization = require('../models/organization');
+const User = require('../models/user');
 
 // render all dog pictures
 async function getAll(req, res) {
@@ -10,17 +11,55 @@ async function getAll(req, res) {
     const orgsInState = await Organization.retrieveInfoByState(req.body.name)
     console.log(orgsInState)
     // const orgsState= orgsInState.
-
-    res.render('all-dogs', {
-        locals: {
-            dogs: dogsArray,
-            signup: 'Sign up',
-            login: 'Log in',
-            favorite: 'Favorite',
-            logout: 'Log out',
-            orgs:  orgsInState
+    if (req.session.user) {
+        const userInstance = await User.getById(req.session.user);
+        if (userInstance.orgId) {
+            res.render('all-dogs', {
+                locals: {
+                    message: 'About page.',
+                    dogsA: dogsArray,
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'd-none',
+                    ad: 'Add / Delete',
+                    dogs: 'Current dogs',
+                    logout: 'Log out',
+                    id: userInstance.orgId,
+                    orgs: orgsInState
+                }
+            });
+        } else if (userInstance.orgId === null) {
+            res.render('all-dogs', {
+                locals: {
+                    message: 'About page.',
+                    dogsA: dogsArray,
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'Favorite',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'Log out',
+                    id: userInstance.orgId,
+                    orgs: orgsInState
+                }
+            });
         }
-    });
+    } else {
+        res.render('all-dogs', {
+            locals: {
+                message: 'About page.',
+                dogsA: dogsArray,
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                ad: 'd-none',
+                dogs: 'd-none',
+                logout: 'd-none',
+                id: '',
+                orgs: orgsInState
+            }
+        });
+    }
 }
 async function statesPost(req,res) {
     const state= req.body.state;
@@ -28,36 +67,8 @@ async function statesPost(req,res) {
     res.redirect(`/state/${state}`)
 }
 
-async function checkLogin(req, res) {
-    const dogsArray = await Dog.getAlldogs();
-    if (req.session.user) {
-        res.render('all-dogs', {
-            locals: {
-                dogs: dogsArray,
-                signup: 'd-none',
-                login: 'd-none',
-                favorite: 'Favorite',
-                logout: 'Log out'
-
-            }
-        });
-    } else {
-        res.render('all-dogs', {
-            locals: {
-                dogs: dogsArray,
-                signup: 'Sign up',
-                login: 'Log in',
-                favorite: 'd-none',
-                logout: 'd-none'
-
-            }
-        });
-    }
-}
-
 
 module.exports = {
     getAll,
-    checkLogin,
     statesPost
 }

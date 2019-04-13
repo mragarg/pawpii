@@ -4,11 +4,10 @@ const loginRoutes = Router();
 
 const {
     getLoginPage,
-    attemptLogin,
-    checkLogin
+    attemptLogin
 } = require('../controllers/login');
 
-loginRoutes.get('/', checkLogin, getLoginPage);
+loginRoutes.get('/', getLoginPage);
 
 loginRoutes.post('/', attemptLogin);
 

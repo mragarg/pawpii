@@ -16,8 +16,50 @@ async function getAllDogs(req, res) {
     });
 }
 
-function addDogForm(req, res) {
-    res.render('add-dog');
+async function addDogForm(req, res) {
+    if (req.session.user) {
+        const userInstance = await User.getById(req.session.user);
+        if (userInstance.orgId) {
+            res.render('add-dog', {
+                locals: {
+                    message: 'About page.',
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'd-none',
+                    ad: 'Add / Delete',
+                    dogs: 'Current dogs',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        } else if (userInstance.orgId === null) {
+            res.render('add-dog', {
+                locals: {
+                    message: 'About page.',
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'Favorite',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'Log out',
+                    id: userInstance.orgId
+                }
+            });
+        }
+    } else {
+        res.render('add-dog', {
+            locals: {
+                message: 'About page.',
+                signup: 'Sign up',
+                login: 'Log in',
+                favorite: 'd-none',
+                ad: 'd-none',
+                dogs: 'd-none',
+                logout: 'd-none',
+                id: ''
+            }
+        });
+    }
 }
 
 async function addDogDB(req, res) {

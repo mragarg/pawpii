@@ -11,10 +11,14 @@ const {
 
 organizationRoutes.get('/dogs/:id', getAllDogs);
 
-organizationRoutes.get('/add', addDogForm);
+organizationRoutes.get('/add-delete', addDogForm);
 
-organizationRoutes.post('/add', addDogDB);
+organizationRoutes.post('/add-delete', addDogDB);
 
-organizationRoutes.get('/delete', deleteDogForm)
+// organizationRoutes.get('/delete', deleteDogForm);
+
+organizationRoutes.get('/add-delete/:id', deleteDogForm);
+
+organizationRoutes.post('/add-delete-d', deleteDogForm);
 
 module.exports = organizationRoutes; 

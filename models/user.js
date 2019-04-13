@@ -42,7 +42,17 @@ class User {
             return data;
         })
     }
-    
+
+    deleteFavorite(id) {
+        return db.none(`
+        delete from favorites where favorites.dog_id=$1`, [id])
+
+    }
+
+     deleteDog(id){
+        return db.none(`
+        delete from dogs where id=$1`, [id])
+    }
     // save user data
     save() {
         return db.result(`            

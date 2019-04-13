@@ -57,9 +57,13 @@ async function getAllDogs(req, res) {
 }
 
 async function addDogForm(req, res) {
+
     if (req.session.user) {
         const userInstance = await User.getById(req.session.user);
         if (userInstance.orgId) {
+            const dogsArray = await Organization.retrieveDogsById(req.session.user);
+            const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
+
             res.render('add-dog', {
                 locals: {
                     message: 'About page.',
@@ -69,7 +73,9 @@ async function addDogForm(req, res) {
                     ad: 'Add / Delete',
                     dogs: 'Current dogs',
                     logout: 'Log out',
-                    id: userInstance.orgId
+                    id: userInstance.orgId,
+                    dogs: dogsArray,
+                    org: orgInfo
                 }
             });
         } else if (userInstance.orgId === null) {
@@ -126,7 +132,14 @@ async function addDogDB(req, res) {
 async function deleteDogForm(req, res) {
     if (req.session.user) {
         const userInstance = await User.getById(req.session.user);
+
         if (userInstance.orgId) {
+            const {id} = req.params
+            await userInstance.deleteFavorite(id);
+            await userInstance.deleteDog(id);
+            const dogsArray = await Organization.retrieveDogsById(req.session.user);
+            console.log(dogsArray);
+             const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
             res.render('delete-dog', {
                 locals: {
                     signup: 'd-none',
@@ -135,7 +148,9 @@ async function deleteDogForm(req, res) {
                     ad: 'Add / Delete',
                     dogs: 'Current dogs',
                     logout: 'Log out',
-                    id: userInstance.orgId
+                    id: userInstance.orgId,
+                    dogs: dogsArray,
+                    org: orgInfo
                 }
             });
         } else if (userInstance.orgId === null) {
@@ -164,6 +179,7 @@ async function deleteDogForm(req, res) {
             }
         });
     }
+
 }
 
 

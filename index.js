@@ -13,7 +13,6 @@ const organizationRouter  =require('./routes/organization');
 const signupRouter = require('./routes/signup');
 const stateRouter = require('./routes/state');
 
-
 const app = express();
 const PORT = process.env.PORT;
 

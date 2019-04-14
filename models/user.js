@@ -49,7 +49,7 @@ class User {
 
     }
 
-     deleteDog(id){
+    deleteDog(id){
         return db.none(`
         delete from dogs where id=$1`, [id])
     }

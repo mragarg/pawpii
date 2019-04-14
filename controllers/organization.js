@@ -5,7 +5,8 @@ async function getAllDogs(req, res) {
     const {id} = req.params
     const dogsArray = await Organization.retrieveDogsById(id);
     const orgInfo = await Organization.retrieveOrgInfo(id);
-    console.log(orgInfo);
+    console.log(req.body.orgId);
+    // console.log(orgId)
     console.log('*******************');
     
     if (req.session.user) {
@@ -21,7 +22,8 @@ async function getAllDogs(req, res) {
                     ad: 'Add / Delete',
                     dogs: 'Current dogs',
                     logout: 'Log out',
-                    id: userInstance.orgId
+                    id: userInstance.orgId,
+                    orgId: orgInfo.id
                 }
             });
         } else if (userInstance.orgId === null) {
@@ -130,17 +132,25 @@ async function addDogDB(req, res) {
 }
 
 async function deleteDogForm(req, res) {
+    const {id} = req.params
+    console.log (id)
+    const dogsArray = await Organization.retrieveDogsById(req.session.user);
+    console.log(dogsArray)
+    console.log('DOGSARAYYYYYYYYYYYYYYYYYYYYY)@)*(#*$^&^$&')
+    const userInstance = await User.getById(req.session.user);
+    console.log(userInstance)
+    console.log('USERINSTANCEEEEEEEE)@)*(#*$^&^$&')
+console.log(req.body.dogId)
+console.log('isidisjdisjdijsidjsidjidsjidsjidsjisdjisjd')
+    await userInstance.deleteFavorite(id);
+    await userInstance.deleteDog(id);
+    console.log(dogsArray)
+     const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
     if (req.session.user) {
         const userInstance = await User.getById(req.session.user);
 
         if (userInstance.orgId) {
-            const {id} = req.params
-            await userInstance.deleteFavorite(id);
-            await userInstance.deleteDog(id);
-            const dogsArray = await Organization.retrieveDogsById(req.session.user);
-            console.log(dogsArray);
-             const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
-            res.render('delete-dog', {
+            res.render('add-dog', {
                 locals: {
                     signup: 'd-none',
                     login: 'd-none',

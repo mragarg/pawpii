@@ -17,8 +17,8 @@ organizationRoutes.post('/add-delete', addDogDB);
 
 // organizationRoutes.get('/delete', deleteDogForm);
 
-organizationRoutes.get('/add-delete/:id', deleteDogForm);
+organizationRoutes.post('/add-delete/:id', deleteDogForm);
 
-organizationRoutes.post('/add-delete-d', deleteDogForm);
+// organizationRoutes.post('/add-delete-d', deleteDogForm);
 
 module.exports = organizationRoutes; 

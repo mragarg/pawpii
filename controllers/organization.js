@@ -135,6 +135,7 @@ async function deleteDogForm(req, res) {
     const userInstance = await User.getById(req.session.user);
     await userInstance.deleteFavorite(id);
     await userInstance.deleteDog(id);
+    res.redirect('/organization/add-delete');
     // const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
     // if (req.session.user) {
     //     const userInstance = await User.getById(req.session.user);

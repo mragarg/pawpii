@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>Org-Dogs</title>
+    <title>Dog-Profile</title>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark static-top">
         <div class="container">
@@ -54,29 +54,19 @@
             </div>
         </div>
     </nav>
-    <div>
-        <address>
-            <strong>${orgs.name}</strong> 
-            <br> 
-            ${orgs.address}<br>
-            ${orgs.city}, ${orgs.state} ${orgs.zip}<br>
-            <abbr title="Phone">P:</abbr>
-            ${orgs.phone}<br>
-            ${orgs.email}<br>
-                
-        </address>
+  
+        <div class="card-group">
+            <div class="card" style="width: 18rem;">
+            <img src="${dog.image_url}" class="card-img-top" alt="">
+        </div>
+            <strong> Name: </strong>${dog.name}
+            <strong> Breed: </strong>${dog.breed}
+            <strong> Age: </strong> ${dog.age}
+            <strong> Description:</strong> ${dog.description}
+            
 
-    </div>
-    <div class="card-group">
-        ${
-            dogsA.map((aDog) => {
-                return `<div class="card" style="width: 18rem;"><a href="/organization/dogs/${aDog.org_id}/${aDog.id}">
-                            <img src="${aDog.image_url}" class="card-img-top" alt="">
-                        </a>
-                        </div>`
-            }).join('')
-        }
-    </div>
+        </div>
+   
 </head>
 <body>
     

@@ -21,6 +21,9 @@ class Dog {
     static getById(orgId) {
         return db.any(`select * from dogs where org_id=$1`, [orgId]);
     }
+    static getOneDog(id) {
+        return db.one(`select * from dogs where id=$1`, [id]);
+    }
 
 }
 

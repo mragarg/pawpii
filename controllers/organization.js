@@ -1,5 +1,6 @@
 const Organization = require('../models/organization');
 const User = require('../models/user');
+const Dog =require('../models/dog');
 
 async function getAllDogs(req, res) {
     const {id} = req.params
@@ -182,7 +183,12 @@ async function deleteDogForm(req, res) {
 
 }
 async function getProfile (req, res) {
-    
+    const {id} = req.params;
+    console.log(id);
+
+    if (req.session.user) {  
+        const oneDog = await Dog.getOneDog(id)
+        console.log(oneDog)
     res.render('dog-profile', {
         locals: {
             signup: 'd-none',
@@ -191,9 +197,11 @@ async function getProfile (req, res) {
             ad: 'Add / Delete',
             dogs: 'Current dogs',
             logout: 'Log out',
-            id: ''
-        }
-    });
+            id: '',
+            dog: oneDog
+           }
+        });
+    }
 }
 
 

@@ -61,13 +61,12 @@ async function addDogForm(req, res) {
 
     if (req.session.user) {
         const userInstance = await User.getById(req.session.user);
+        const dogsArray = await Organization.retrieveDogsById(req.session.user);
+        const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
         if (userInstance.orgId) {
-            const dogsArray = await Organization.retrieveDogsById(req.session.user);
-            const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
 
             res.render('add-dog', {
                 locals: {
-                    message: 'About page.',
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
@@ -75,28 +74,28 @@ async function addDogForm(req, res) {
                     dogs: 'Current dogs',
                     logout: 'Log out',
                     id: userInstance.orgId,
-                    dogs: dogsArray,
+                    dogsA: dogsArray,
                     org: orgInfo
                 }
             });
         } else if (userInstance.orgId === null) {
-            res.render('add-dog', {
+            res.render('error', {
                 locals: {
-                    message: 'About page.',
+                    message: 'You are not an organization.',
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'Favorite',
                     ad: 'd-none',
                     dogs: 'd-none',
                     logout: 'Log out',
-                    id: userInstance.orgId
+                    id: ''
                 }
             });
         }
     } else {
-        res.render('add-dog', {
+        res.render('error', {
             locals: {
-                message: 'About page.',
+                message: "Go away and sign up.",
                 signup: 'Sign up',
                 login: 'Log in',
                 favorite: 'd-none',
@@ -136,50 +135,50 @@ async function deleteDogForm(req, res) {
     const userInstance = await User.getById(req.session.user);
     await userInstance.deleteFavorite(id);
     await userInstance.deleteDog(id);
-     const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
-    if (req.session.user) {
-        const userInstance = await User.getById(req.session.user);
+    // const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
+    // if (req.session.user) {
+    //     const userInstance = await User.getById(req.session.user);
 
-        if (userInstance.orgId) {
-            res.render('add-dog', {
-                locals: {
-                    signup: 'd-none',
-                    login: 'd-none',
-                    favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out',
-                    id: userInstance.orgId,
-                    dogs: dogsArray,
-                    org: orgInfo
-                }
-            });
-        } else if (userInstance.orgId === null) {
-            res.render('delete-dog', {
-                locals: {
-                    signup: 'd-none',
-                    login: 'd-none',
-                    favorite: 'Favorite',
-                    ad: 'd-none',
-                    dogs: 'd-none',
-                    logout: 'Log out',
-                    id: userInstance.orgId
-                }
-            });
-        }
-    } else {
-        res.render('delete-dog', {
-            locals: {
-                signup: 'Sign up',
-                login: 'Log in',
-                favorite: 'd-none',
-                ad: 'd-none',
-                dogs: 'd-none',
-                logout: 'd-none',
-                id: ''
-            }
-        });
-    }
+    //     if (userInstance.orgId) {
+    //         res.render('add-dog', {
+    //             locals: {
+    //                 signup: 'd-none',
+    //                 login: 'd-none',
+    //                 favorite: 'd-none',
+    //                 ad: 'Add / Delete',
+    //                 dogs: 'Current dogs',
+    //                 logout: 'Log out',
+    //                 id: userInstance.orgId,
+    //                 dogs: dogsArray,
+    //                 org: orgInfo
+    //             }
+    //         });
+    //     } else if (userInstance.orgId === null) {
+    //         res.render('delete-dog', {
+    //             locals: {
+    //                 signup: 'd-none',
+    //                 login: 'd-none',
+    //                 favorite: 'Favorite',
+    //                 ad: 'd-none',
+    //                 dogs: 'd-none',
+    //                 logout: 'Log out',
+    //                 id: userInstance.orgId
+    //             }
+    //         });
+    //     }
+    // } else {
+    //     res.render('delete-dog', {
+    //         locals: {
+    //             signup: 'Sign up',
+    //             login: 'Log in',
+    //             favorite: 'd-none',
+    //             ad: 'd-none',
+    //             dogs: 'd-none',
+    //             logout: 'd-none',
+    //             id: ''
+    //         }
+    //     });
+    // }
 
 }
 async function getProfile (req, res) {

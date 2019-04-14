@@ -8,10 +8,9 @@ async function getAll(req, res) {
     if (req.session.user) {
         const userInstance = await User.getById(req.session.user);
         if (userInstance.orgId) {
-            res.render('favorite', {
+            res.render('error', {
                 locals: {
-                    dogsA: dogsArray,
-                    message: 'About page.',
+                    message: 'Organization cannot have favorite',
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
@@ -24,23 +23,20 @@ async function getAll(req, res) {
         } else if (userInstance.orgId === null) {
             res.render('favorite', {
                 locals: {
-                    dogsA: dogsArray,
-                    message: 'About page.',
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'Favorite',
                     ad: 'd-none',
                     dogs: 'd-none',
                     logout: 'Log out',
-                    id: userInstance.orgId
+                    id: ''
                 }
             });
         }
     } else {
-        res.render('favorite', {
+        res.render('error', {
             locals: {
-                dogsA: dogsArray,
-                message: 'About page.',
+                message: 'Log in as user to see favorite',
                 signup: 'Sign up',
                 login: 'Log in',
                 favorite: 'd-none',

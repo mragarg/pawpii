@@ -6,10 +6,13 @@ const {
     getAllDogs,
     addDogForm,
     addDogDB,
-    deleteDogForm
+    deleteDogForm,
+    getProfile
 } = require('../controllers/organization');
 
 organizationRoutes.get('/dogs/:id', getAllDogs);
+
+organizationRoutes.get('/dogs/:id/:id', getProfile);
 
 organizationRoutes.get('/add-delete', addDogForm);
 

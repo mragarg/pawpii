@@ -11,6 +11,8 @@ async function addUser(req, res) {
     if(!(password === password2)) {
         res.render('signup', {
             locals: {
+                alert: '',
+                orgAlert: 'd-none',
                 name: '',
                 address: '',
                 city: '',
@@ -57,6 +59,8 @@ async function checkLogin(req, res) {
         if (userInstance.orgId) {
             res.render('error', {
                 locals: {
+                    alert: 'd-none',
+                    orgAlert: 'd-none',
                     name: '',
                     address: '',
                     city: '',
@@ -87,6 +91,8 @@ async function checkLogin(req, res) {
         } else if (userInstance.orgId === null) {
             res.render('error', {
                 locals: {
+                    alert: 'd-none',
+                    orgAlert: 'd-none',
                     name: '',
                     address: '',
                     city: '',
@@ -118,6 +124,8 @@ async function checkLogin(req, res) {
     } else {
         res.render('signup', {
             locals: {
+                alert: 'd-none',
+                orgAlert: 'd-none',
                 name: '',
                 address: '',
                 city: '',
@@ -164,6 +172,8 @@ async function addOrganization(req, res) {
     if(!(orgPassword === orgPassword2)) {
         res.render('signup', {
             locals: {
+                alert: 'd-none',
+                orgAlert: '',
                 name: name,
                 address: address,
                 city: city,

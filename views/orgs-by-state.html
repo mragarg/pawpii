@@ -54,23 +54,8 @@
             </div>
         </div>
     </nav>
-    <div>
-        <!-- <address>
-            <strong>${orgs.name}</strong> 
-            <br> 
-            ${orgs.address}<br>
-            ${orgs.city}, ${orgs.state} ${orgs.zip}<br>
-            <abbr title="Phone">P:</abbr>
-            ${orgs.phone}<br>
-            ${orgs.email}<br>
-                
-        </address> -->
-
-    </div>
-    
-
-    <!-- <div class="card w-20"></div> -->
-    <div class="card-group text-center justify-content">
+    <div class="text-center pt-3 pb-3" style="font-size: 3vh"><strong>Organizations located in ${orgs[0].state}</strong></div>
+    <div class="card-group">
         ${
             orgs.map((anOrg) => {
                 return `
@@ -78,14 +63,14 @@
     action="/organization/dogs/${anOrg.id}"
     method="GET"
 >
-                <div name="id" class="card" style="max-width: 18rem;" value=${anOrg.id}>
+                <div name="id" class="card col-lg-4 m-2 text-center" style="max-width: 18rem;" value="${anOrg.id}">
 
                     <strong>${anOrg.name}</strong>
                     ${anOrg.address}<br>
-                    ${anOrg.city} , ${anOrg.state}<br>
-                    
-                    <button type="submit" class="btn btn-primary">Go</button>
-
+                    ${anOrg.city} , ${anOrg.state} ${anOrg.zip}<br>
+                    <div class="text-center">
+                    <button type="submit" class="btn m-2" style="background-color: rgb(23, 138, 165); color: white; width: 10vh;">Go</button>
+                    </div>
                         </div>
                     </form>
                         `

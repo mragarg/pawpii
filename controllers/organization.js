@@ -189,11 +189,10 @@ async function deleteDogForm(req, res) {
 }
 async function getProfile (req, res) {
     const {id} = req.params;
-    console.log(id);
+    const userInstance = await User.getById(req.session.user);    
     const favoriteArray = await Favorite.getUserFavorites(req.session.user)
     let inFavorite = false;
-console.log(favoriteArray)
-    if (req.session.user) { 
+    if (userInstance.orgId === null) { 
 
         const oneDog = await Dog.getOneDog(id)
         // FOR LOOP CHECK FOR EXISTENCE IN ARRAY
@@ -226,9 +225,9 @@ console.log(favoriteArray)
         locals: {
             signup: 'd-none',
             login: 'd-none',
-            favorite: 'd-none',
-            ad: 'Add / Delete',
-            dogs: 'Current dogs',
+            favorite: 'Favorite',
+            ad: 'd-none',
+            dogs: 'd-none',
             logout: 'Log out',
             id: '',
             dog: oneDog,
@@ -237,6 +236,18 @@ console.log(favoriteArray)
         });
     }
 }
+async function addToFavorites (req, res) {
+    console.log('TESTTTTTTTTTTTT')
+    const {id} = req.params
+    let userTest = await User.getById(req.session.user)
+    console.log("MADE IT THIS FAR");
+    const oneDog = await Dog.getOneDog(id)
+
+    const favorited = await userTest.addFavorite(userTest.id, oneDog.id)
+    console.log(favorited)
+    
+    res.redirect(`/organization/dogs/${oneDog.org_id}/${oneDog.id}`)
+}
 
 
 module.exports = {
@@ -244,5 +255,6 @@ module.exports = {
     addDogForm,
     addDogDB,
     deleteDogForm,
-    getProfile
+    getProfile,
+    addToFavorites
 }

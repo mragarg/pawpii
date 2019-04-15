@@ -65,8 +65,11 @@
             <strong> Description:</strong> ${dog.description}
            
         </div>
-        <img src=${favoritepic}>
-   
+        <form 
+        action="/organization/dogs/${dog.org_id}/${dog.id}"
+        method="POST">
+        <button class="bg-transparent border-white" type="submit"><img src=${favoritepic}></button> 
+    </form>
 </head>
 <body>
     

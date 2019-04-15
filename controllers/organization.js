@@ -133,10 +133,10 @@ async function addDogDB(req, res) {
 async function deleteDogForm(req, res) {
     const {id} = req.params
     const userInstance = await User.getById(req.session.user);
-    const dogsArray = await Organization.retrieveDogsById(userInstance.orgId);
-
     await userInstance.deleteFavorite(id);
     await userInstance.deleteDog(id);
+    const dogsArray = await Organization.retrieveDogsById(userInstance.orgId);
+
     // res.redirect('/organization/add-delete');
     const orgInfo = await Organization.retrieveOrgInfo(req.session.user);
     if (req.session.user) {

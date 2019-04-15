@@ -19,9 +19,9 @@ async function getAllDogs(req, res) {
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out',
+                    ad: '',
+                    dogs: '',
+                    logout: '',
                     id: userInstance.orgId,
                     orgId: orgInfo.id
                 }
@@ -33,10 +33,10 @@ async function getAllDogs(req, res) {
                     orgs: orgInfo,
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
+                    favorite: '',
                     ad: 'd-none',
                     dogs: 'd-none',
-                    logout: 'Log out',
+                    logout: '',
                     id: userInstance.orgId
                 }
             });
@@ -46,8 +46,8 @@ async function getAllDogs(req, res) {
             locals: {
                 dogsA: dogsArray,
                 orgs: orgInfo,
-                signup: 'Sign up',
-                login: 'Log in',
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',
@@ -72,9 +72,9 @@ async function addDogForm(req, res) {
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out',
+                    ad: '',
+                    dogs: '',
+                    logout: '',
                     id: userInstance.orgId,
                     dogsA: dogsArray,
                     org: orgInfo
@@ -83,13 +83,13 @@ async function addDogForm(req, res) {
         } else if (userInstance.orgId === null) {
             res.render('error', {
                 locals: {
-                    message: 'User cannot add / delete dogs.',
+                    message: 'Users cannot add / delete dogs.',
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
+                    favorite: '',
                     ad: 'd-none',
                     dogs: 'd-none',
-                    logout: 'Log out',
+                    logout: '',
                     id: ''
                 }
             });
@@ -98,8 +98,8 @@ async function addDogForm(req, res) {
         res.render('error', {
             locals: {
                 message: "Go away.",
-                signup: 'Sign up',
-                login: 'Log in',
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',

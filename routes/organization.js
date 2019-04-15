@@ -7,12 +7,15 @@ const {
     addDogForm,
     addDogDB,
     deleteDogForm,
-    getProfile
+    getProfile,
+    addToFavorites
 } = require('../controllers/organization');
 
 organizationRoutes.get('/dogs/:id', getAllDogs);
 
 organizationRoutes.get('/dogs/:id/:id', getProfile);
+
+organizationRoutes.post('/dogs/:id/:id', addToFavorites)
 
 organizationRoutes.get('/add-delete', addDogForm);
 

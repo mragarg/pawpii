@@ -123,6 +123,17 @@ class User {
         })
     }
 
+    addFavorite(id ,dogId) {
+        return db.one(`
+        insert into favorites (user_id, dog_id) 
+        values
+        ($1, $2)
+        returning id, dog_id`, [id, dogId])
+        .then((data) => {
+            return data;
+        })
+    }
+
 }
 
 module.exports = User;

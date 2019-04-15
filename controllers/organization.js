@@ -235,7 +235,7 @@ async function getProfile (req, res) {
                             logout: 'Log out',
                             id: '',
                             dog: oneDog,
-                            favoritepic: favorited
+                            favoritepic: ''
                         }
                     });
                 }

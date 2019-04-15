@@ -82,7 +82,7 @@ async function addDogForm(req, res) {
         } else if (userInstance.orgId === null) {
             res.render('error', {
                 locals: {
-                    message: 'You are not an organization.',
+                    message: 'User cannot add / delete dogs.',
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'Favorite',
@@ -96,7 +96,7 @@ async function addDogForm(req, res) {
     } else {
         res.render('error', {
             locals: {
-                message: "Go away and sign up.",
+                message: "Go away.",
                 signup: 'Sign up',
                 login: 'Log in',
                 favorite: 'd-none',

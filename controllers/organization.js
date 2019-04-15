@@ -175,13 +175,12 @@ async function deleteDogForm(req, res) {
     } else {
         res.render('delete-dog', {
             locals: {
-                signup: 'Sign up',
-                login: 'Log in',
+                signup: 'd-none',
+                login: 'd-none',
                 favorite: 'd-none',
-                ad: 'd-none',
-                dogs: 'd-none',
-                logout: 'd-none',
-                id: ''
+                ad: 'Add / Delete',
+                dogs: 'Current dogs',
+                logout: 'Log out'
             }
         });
     }
@@ -190,10 +189,10 @@ async function deleteDogForm(req, res) {
 async function getProfile (req, res) {
     const {id} = req.params;
     const userInstance = await User.getById(req.session.user);    
-    const favoriteArray = await Favorite.getUserFavorites(req.session.user)
+    const favoriteArray = await Favorite.getUserFavorites(req.session.user);
+    console.log(favoriteArray)
     let inFavorite = false;
     if (userInstance.orgId === null) { 
-
         const oneDog = await Dog.getOneDog(id)
         // FOR LOOP CHECK FOR EXISTENCE IN ARRAY
         for(let i=0; i<favoriteArray.length; i++) {
@@ -204,22 +203,11 @@ async function getProfile (req, res) {
                 break;
             }
         }
-
         let favorited = 'https://i.imgur.com/4PfDTQ4.png';
 
         if (inFavorite) {
             favorited = 'https://i.imgur.com/BPk44AP.png'
         }
-        // favoriteArray.forEach((data) => {
-        //     if (data.dog_id === oneDog.id) {
-        //         console.log('yayyyyyy. Im in favorites')
-        //         let inFavorite = true;
-        //     } else {
-        //         console.log('Noooooo. Im not in favorites')
-        //     }
-        // })
-        
-
         console.log(oneDog)
     res.render('dog-profile', {
         locals: {
@@ -234,7 +222,32 @@ async function getProfile (req, res) {
             favoritepic: favorited
            }
         });
-    }
+    } else if (userInstance.orgId){
+        res.render('dog-profile', {
+            locals: {
+                signup: 'd-none',
+                login: 'd-none',
+                favorite: 'Favorite',
+                ad: 'd-none',
+                dogs: 'd-none',
+                logout: 'Log out',
+                id: '',
+                dog: oneDog,
+                favoritepic: favorited
+               }
+            })
+        } else { 
+            res.render('dog-profile', {
+                locals: {
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'd-none',
+                    ad: 'Add / Delete',
+                    dogs: 'Current dogs',
+                    logout: 'Log out'
+                }
+            });
+        }
 }
 async function addToFavorites (req, res) {
     console.log('TESTTTTTTTTTTTT')

@@ -14,13 +14,20 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Error</title>
+    <style>
+            .page-background {
+                background: url(https://i.imgur.com/VTZgdDx.jpg) no-repeat center;
+                background-size: 70%;
+                height: 70vh;
+            }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark static-top">
         <div class="container">
             <a class="navbar-brand" href="/">
-                    <img src="https://i.imgur.com/PnXehAt.png" alt="" style="width: 40%;">
+                    <img src="https://i.imgur.com/PnXehAt.png" alt="" style="width: 35%;">
                 </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -54,9 +61,9 @@
                   </li>
                 </ul>
             </div>
-        </div>
     </nav>
-    <h1>${message}</h1>
-
+    <div class="page-background w-100">
+    </div>
+    <h1 class="text-center display-4" style="font-size: 6vw;">${message}</h1>
 </body>
 </html>

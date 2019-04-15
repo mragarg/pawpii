@@ -29,7 +29,8 @@ async function getAll(req, res) {
                     ad: 'd-none',
                     dogs: 'd-none',
                     logout: 'Log out',
-                    id: ''
+                    id: '',
+                    dogsA: dogsArray
                 }
             });
         }

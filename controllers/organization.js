@@ -1,6 +1,7 @@
 const Organization = require('../models/organization');
 const User = require('../models/user');
 const Dog =require('../models/dog');
+const Favorite = require('../models/favorite')
 
 async function getAllDogs(req, res) {
     const {id} = req.params
@@ -132,6 +133,8 @@ async function addDogDB(req, res) {
 
 async function deleteDogForm(req, res) {
     const {id} = req.params
+
+   
     const userInstance = await User.getById(req.session.user);
     await userInstance.deleteFavorite(id);
     await userInstance.deleteDog(id);
@@ -187,9 +190,37 @@ async function deleteDogForm(req, res) {
 async function getProfile (req, res) {
     const {id} = req.params;
     console.log(id);
+    const favoriteArray = await Favorite.getUserFavorites(req.session.user)
+    let inFavorite = false;
+console.log(favoriteArray)
+    if (req.session.user) { 
 
-    if (req.session.user) {  
         const oneDog = await Dog.getOneDog(id)
+        // FOR LOOP CHECK FOR EXISTENCE IN ARRAY
+        for(let i=0; i<favoriteArray.length; i++) {
+            console.log(favoriteArray[i].dog_id)
+            if (favoriteArray[i].dog_id === oneDog.id){
+                inFavorite = true 
+                console.log('DONEEEEEEEEEEEEEEE')
+                break;
+            }
+        }
+
+        let favorited = 'https://i.imgur.com/4PfDTQ4.png';
+
+        if (inFavorite) {
+            favorited = 'https://i.imgur.com/BPk44AP.png'
+        }
+        // favoriteArray.forEach((data) => {
+        //     if (data.dog_id === oneDog.id) {
+        //         console.log('yayyyyyy. Im in favorites')
+        //         let inFavorite = true;
+        //     } else {
+        //         console.log('Noooooo. Im not in favorites')
+        //     }
+        // })
+        
+
         console.log(oneDog)
     res.render('dog-profile', {
         locals: {
@@ -200,7 +231,8 @@ async function getProfile (req, res) {
             dogs: 'Current dogs',
             logout: 'Log out',
             id: '',
-            dog: oneDog
+            dog: oneDog,
+            favoritepic: favorited
            }
         });
     }

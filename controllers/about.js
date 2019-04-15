@@ -6,26 +6,26 @@ async function checkLogin(req, res) {
         if (userInstance.orgId) {
             res.render('about', {
                 locals: {
-                    message: 'About page.',
+                    message: 'About us.',
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out',
+                    ad: '',
+                    dogs: '',
+                    logout: '',
                     id: userInstance.orgId
                 }
             });
         } else if (userInstance.orgId === null) {
             res.render('about', {
                 locals: {
-                    message: 'About page.',
+                    message: 'About us.',
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
+                    favorite: '',
                     ad: 'd-none',
                     dogs: 'd-none',
-                    logout: 'Log out',
+                    logout: '',
                     id: userInstance.orgId
                 }
             });
@@ -33,9 +33,9 @@ async function checkLogin(req, res) {
     } else {
         res.render('about', {
             locals: {
-                message: 'About page.',
-                signup: 'Sign up',
-                login: 'Log in',
+                message: 'About us.',
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',

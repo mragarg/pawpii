@@ -12,7 +12,9 @@ async function addUser(req, res) {
         res.render('signup', {
             locals: {
                 alert: '',
+                alert2: 'd-none',
                 orgAlert: 'd-none',
+                orgAlert2: 'd-none',
                 name: '',
                 address: '',
                 city: '',
@@ -30,9 +32,9 @@ async function addUser(req, res) {
                 tabOrg: '',
                 showUser: 'tab-pane fade active show',
                 showOrg: 'tab-pane fade',
-                message: 'Please confirm password.',
-                signup: 'Sign up',
-                login: 'Log in',
+                message: 'Sign up.',
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',
@@ -56,11 +58,32 @@ async function addUser(req, res) {
                 res.redirect('/');
             });
         } else {
-            res.render('error', {
+            res.render('signup', {
                 locals: {
-                    message: "User email already exist.",
-                    signup: 'Sign up',
-                    login: 'Log in',
+                    alert: 'd-none',
+                    alert2: '',
+                    orgAlert: 'd-none',
+                    orgAlert2: 'd-none',
+                    name: '',
+                    address: '',
+                    city: '',
+                    state: '',
+                    zip: '',
+                    phone: '',
+                    orgEmail: '',
+                    description: '',
+                    url: '',
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
+                    tabUser: `active`,
+                    tabOrg: '',
+                    showUser: 'tab-pane fade active show',
+                    showOrg: 'tab-pane fade',
+                    message: 'Sign up.',
+                    signup: '',
+                    login: '',
                     favorite: 'd-none',
                     ad: 'd-none',
                     dogs: 'd-none',
@@ -82,9 +105,9 @@ async function checkLogin(req, res) {
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out',
+                    ad: '',
+                    dogs: '',
+                    logout: '',
                     id: userInstance.orgId
                 }
             });
@@ -94,10 +117,10 @@ async function checkLogin(req, res) {
                     message: "Already signed up as a user.",
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
+                    favorite: '',
                     ad: 'd-none',
                     dogs: 'd-none',
-                    logout: 'Log out',
+                    logout: '',
                     id: ''
                 }
             });
@@ -106,7 +129,9 @@ async function checkLogin(req, res) {
         res.render('signup', {
             locals: {
                 alert: 'd-none',
+                alert2: 'd-none',
                 orgAlert: 'd-none',
+                orgAlert2: 'd-none',
                 name: '',
                 address: '',
                 city: '',
@@ -124,9 +149,9 @@ async function checkLogin(req, res) {
                 tabOrg: '',
                 showUser: 'tab-pane fade active show',
                 showOrg: 'tab-pane fade',
-                message: "Please sign up.",
-                signup: 'Sign up',
-                login: 'Log in',
+                message: "Sign up.",
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',
@@ -154,7 +179,9 @@ async function addOrganization(req, res) {
         res.render('signup', {
             locals: {
                 alert: 'd-none',
+                alert2: 'd-none',
                 orgAlert: '',
+                orgAlert2: 'd-none',
                 name: name,
                 address: address,
                 city: city,
@@ -172,9 +199,9 @@ async function addOrganization(req, res) {
                 tabOrg: 'active',
                 showUser: 'tab-pane fade',
                 showOrg: 'tab-pane fade active show',
-                message: 'Please confirm password.',
-                signup: 'Sign up',
-                login: 'Log in',
+                message: 'Sign up.',
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',
@@ -212,11 +239,32 @@ async function addOrganization(req, res) {
                 res.redirect('/');
             });
         } else {
-            res.render('error', {
+            res.render('signup', {
                 locals: {
-                    message: "Organization email already exist.",
-                    signup: 'Sign up',
-                    login: 'Log in',
+                    alert: 'd-none',
+                    alert2: 'd-none',
+                    orgAlert: 'd-none',
+                    orgAlert2: '',
+                    name: name,
+                    address: address,
+                    city: city,
+                    state: state,
+                    zip: zip,
+                    phone: phone,
+                    orgEmail: orgEmail,
+                    description: description,
+                    url: url,
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: '',
+                    tabUser: ``,
+                    tabOrg: 'active',
+                    showUser: 'tab-pane fade',
+                    showOrg: 'tab-pane fade active show',
+                    message: 'Sign up.',
+                    signup: '',
+                    login: '',
                     favorite: 'd-none',
                     ad: 'd-none',
                     dogs: 'd-none',

@@ -10,10 +10,10 @@ async function getLoginPage(req, res) {
                     message: 'Already logged in as an organizaion.',
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
-                    ad: 'd-none',
-                    dogs: 'd-none',
-                    logout: 'Log out',
+                    favorite: 'd-none',
+                    ad: '',
+                    dogs: '',
+                    logout: '',
                     id: ''
                 }
             });
@@ -23,10 +23,10 @@ async function getLoginPage(req, res) {
                     message: 'Already logged in as a user.',
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
+                    favorite: '',
                     ad: 'd-none',
                     dogs: 'd-none',
-                    logout: 'Log out',
+                    logout: '',
                     id: ''
                 }
             });
@@ -36,8 +36,8 @@ async function getLoginPage(req, res) {
             locals: {
                 email: '',
                 message: 'Please login.',
-                signup: 'Sign up',
-                login: 'Log in',
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',
@@ -69,8 +69,8 @@ async function attemptLogin(req, res) {
                 locals: {
                     email: theEmail,
                     message: 'Password is incorrect. Please try again.',
-                    signup: 'Sign up',
-                    login: 'Log in',
+                    signup: '',
+                    login: '',
                     favorite: 'd-none',
                     ad: 'd-none',
                     dogs: 'd-none',
@@ -85,8 +85,8 @@ async function attemptLogin(req, res) {
             locals: {
                 email: theEmail,
                 message: 'Email is incorrect. Please try again.',
-                signup: 'Sign up',
-                login: 'Log in',
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',

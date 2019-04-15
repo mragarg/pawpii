@@ -187,42 +187,29 @@ async function deleteDogForm(req, res) {
 
 }
 async function getProfile (req, res) {
-    const {id} = req.params;
-    const userInstance = await User.getById(req.session.user);    
-    const favoriteArray = await Favorite.getUserFavorites(req.session.user);
-    console.log(favoriteArray)
-    let inFavorite = false;
-    if (userInstance.orgId === null) { 
-        const oneDog = await Dog.getOneDog(id)
-        // FOR LOOP CHECK FOR EXISTENCE IN ARRAY
-        for(let i=0; i<favoriteArray.length; i++) {
-            console.log(favoriteArray[i].dog_id)
-            if (favoriteArray[i].dog_id === oneDog.id){
-                inFavorite = true 
-                console.log('DONEEEEEEEEEEEEEEE')
-                break;
+    if (req.session.user) {
+        const {id} = req.params;
+        const userInstance = await User.getById(req.session.user);    
+        const favoriteArray = await Favorite.getUserFavorites(req.session.user);
+        console.log(favoriteArray)
+        let inFavorite = false;
+        if (userInstance.orgId === null) { 
+            const oneDog = await Dog.getOneDog(id)
+            // FOR LOOP CHECK FOR EXISTENCE IN ARRAY
+            for(let i=0; i<favoriteArray.length; i++) {
+                console.log(favoriteArray[i].dog_id)
+                if (favoriteArray[i].dog_id === oneDog.id){
+                    inFavorite = true 
+                    console.log('DONEEEEEEEEEEEEEEE')
+                    break;
+                }
             }
-        }
-        let favorited = 'https://i.imgur.com/4PfDTQ4.png';
+            let favorited = 'https://i.imgur.com/4PfDTQ4.png';
 
-        if (inFavorite) {
-            favorited = 'https://i.imgur.com/BPk44AP.png'
-        }
-        console.log(oneDog)
-    res.render('dog-profile', {
-        locals: {
-            signup: 'd-none',
-            login: 'd-none',
-            favorite: 'Favorite',
-            ad: 'd-none',
-            dogs: 'd-none',
-            logout: 'Log out',
-            id: '',
-            dog: oneDog,
-            favoritepic: favorited
-           }
-        });
-    } else if (userInstance.orgId){
+            if (inFavorite) {
+                favorited = 'https://i.imgur.com/BPk44AP.png'
+            }
+            console.log(oneDog)
         res.render('dog-profile', {
             locals: {
                 signup: 'd-none',
@@ -234,19 +221,37 @@ async function getProfile (req, res) {
                 id: '',
                 dog: oneDog,
                 favoritepic: favorited
-               }
-            })
-        } else { 
+            }
+            });
+        } else if (userInstance.orgId){
             res.render('dog-profile', {
                 locals: {
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out'
+                    favorite: 'Favorite',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'Log out',
+                    id: '',
+                    dog: oneDog,
+                    favoritepic: favorited
                 }
-            });
+                })
+            } else { 
+                res.render('dog-profile', {
+                    locals: {
+                        signup: 'd-none',
+                        login: 'd-none',
+                        favorite: 'd-none',
+                        ad: 'Add / Delete',
+                        dogs: 'Current dogs',
+                        logout: 'Log out',
+                        id: '',
+                        dog: oneDog,
+                        favoritepic: favorited
+                    }
+                });
+            }
         }
 }
 async function addToFavorites (req, res) {

@@ -132,9 +132,7 @@ async function addDogDB(req, res) {
 }
 
 async function deleteDogForm(req, res) {
-    const {id} = req.params
-
-   
+    const {id} = req.params;
     const userInstance = await User.getById(req.session.user);
     await userInstance.deleteFavorite(id);
     await userInstance.deleteDog(id);
@@ -151,9 +149,9 @@ async function deleteDogForm(req, res) {
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out',
+                    ad: '',
+                    dogs: '',
+                    logout: '',
                     id: userInstance.orgId,
                     dogsA: dogsArray,
                     org: orgInfo
@@ -164,10 +162,10 @@ async function deleteDogForm(req, res) {
                 locals: {
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
+                    favorite: '',
                     ad: 'd-none',
                     dogs: 'd-none',
-                    logout: 'Log out',
+                    logout: '',
                     id: userInstance.orgId
                 }
             });
@@ -178,81 +176,72 @@ async function deleteDogForm(req, res) {
                 signup: 'd-none',
                 login: 'd-none',
                 favorite: 'd-none',
-                ad: 'Add / Delete',
-                dogs: 'Current dogs',
-                logout: 'Log out'
+                ad: '',
+                dogs: '',
+                logout: ''
             }
         });
     }
 
 }
 async function getProfile (req, res) {
-    if (req.session.user) {
-        const {id} = req.params;
-        const userInstance = await User.getById(req.session.user);    
-        const favoriteArray = await Favorite.getUserFavorites(req.session.user);
-        console.log(favoriteArray)
-        let inFavorite = false;
-        if (userInstance.orgId === null) { 
-            const oneDog = await Dog.getOneDog(id)
-            // FOR LOOP CHECK FOR EXISTENCE IN ARRAY
-            for(let i=0; i<favoriteArray.length; i++) {
-                console.log(favoriteArray[i].dog_id)
-                if (favoriteArray[i].dog_id === oneDog.id){
-                    inFavorite = true 
-                    console.log('DONEEEEEEEEEEEEEEE')
-                    break;
-                }
-            }
-            let favorited = 'https://i.imgur.com/4PfDTQ4.png';
 
-            if (inFavorite) {
-                favorited = 'https://i.imgur.com/BPk44AP.png'
-            }
+    if (req.session.user) { 
+    const {id} = req.params;
+    const userInstance = await User.getById(req.session.user);    
+    const favoriteArray = await Favorite.getUserFavorites(req.session.user);
+    console.log(favoriteArray)
+    let inFavorite = false;
+    const oneDog = await Dog.getOneDog(id)
+    for(let i=0; i<favoriteArray.length; i++) {
+        console.log(favoriteArray[i].dog_id)
+        if (favoriteArray[i].dog_id === oneDog.id){
+            inFavorite = true 
+            console.log('DONEEEEEEEEEEEEEEE')
+            break;
+        }
+    }
+    let favorited = 'https://i.imgur.com/4PfDTQ4.png';
+
+    if (inFavorite) {
+        favorited = 'https://i.imgur.com/BPk44AP.png'
+    }
+
+        if (userInstance.orgId === null) { 
+            // FOR LOOP CHECK FOR EXISTENCE IN ARRAY 
             console.log(oneDog)
-        res.render('dog-profile', {
-            locals: {
-                signup: 'd-none',
-                login: 'd-none',
-                favorite: 'Favorite',
-                ad: 'd-none',
-                dogs: 'd-none',
-                logout: 'Log out',
-                id: '',
-                dog: oneDog,
-                favoritepic: favorited
-            }
-            });
-        } else if (userInstance.orgId){
             res.render('dog-profile', {
                 locals: {
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
+                    favorite: '',
                     ad: 'd-none',
                     dogs: 'd-none',
-                    logout: 'Log out',
+                    logout: '',
                     id: '',
                     dog: oneDog,
                     favoritepic: favorited
                 }
-                })
-            } else { 
-                res.render('dog-profile', {
-                    locals: {
-                        signup: 'd-none',
-                        login: 'd-none',
-                        favorite: 'd-none',
-                        ad: 'Add / Delete',
-                        dogs: 'Current dogs',
-                        logout: 'Log out',
-                        id: '',
-                        dog: oneDog,
-                        favoritepic: favorited
-                    }
                 });
-            }
-        }
+            }  else { 
+                    res.render('dog-profile', {
+                        locals: {
+                            signup: 'd-none',
+                            login: 'd-none',
+                            favorite: 'd-none',
+                            ad: '',
+                            dogs: '',
+                            logout: '',
+                            id: '',
+                            dog: oneDog,
+                            favoritepic: ''
+                        }
+                    });
+                }
+    }
+    else { 
+        res.redirect('/login')
+    }
 }
 async function addToFavorites (req, res) {
     console.log('TESTTTTTTTTTTTT')

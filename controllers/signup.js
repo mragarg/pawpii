@@ -41,15 +41,34 @@ async function addUser(req, res) {
             }
         });
     } else {
-        const addUser = await User.add(firstName, lastName, email, password, null);
-        console.log(addUser);
-        const instanceUser = new User(addUser.id, addUser.first_name, addUser.last_name, addUser.email, addUser.password, null);
-        console.log(instanceUser);
-        // await addUser.save();
-        console.log('you did the thing');
-        await instanceUser.setPassword(password);
-        await instanceUser.save();
-        res.redirect('/');
+        const checkEmail = await User.getByEmail(req.body.email);
+        if (checkEmail === null) {
+            const addUser = await User.add(firstName, lastName, email, password, null);
+            console.log(addUser);
+            const instanceUser = new User(addUser.id, addUser.first_name, addUser.last_name, addUser.email, addUser.password, null);
+            console.log(instanceUser);
+            await instanceUser.setPassword(password);
+            await instanceUser.save();
+            const theEmail = escape(req.body.email);
+            const theUser = await User.getByEmail(theEmail);
+            req.session.user = theUser.id;
+            req.session.save(() => {
+                res.redirect('/');
+            });
+        } else {
+            res.render('error', {
+                locals: {
+                    message: "User email already exist.",
+                    signup: 'Sign up',
+                    login: 'Log in',
+                    favorite: 'd-none',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'd-none',
+                    id: ''
+                }
+            });
+        }
     }
 }
 
@@ -59,25 +78,6 @@ async function checkLogin(req, res) {
         if (userInstance.orgId) {
             res.render('error', {
                 locals: {
-                    alert: 'd-none',
-                    orgAlert: 'd-none',
-                    name: '',
-                    address: '',
-                    city: '',
-                    state: '',
-                    zip: '',
-                    phone: '',
-                    orgEmail: '',
-                    description: '',
-                    url: '',
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    password: '',
-                    tabUser: `active`,
-                    tabOrg: '',
-                    showUser: 'tab-pane fade active show',
-                    showOrg: 'tab-pane fade',
                     message: "Already signed up as an organization.",
                     signup: 'd-none',
                     login: 'd-none',
@@ -91,25 +91,6 @@ async function checkLogin(req, res) {
         } else if (userInstance.orgId === null) {
             res.render('error', {
                 locals: {
-                    alert: 'd-none',
-                    orgAlert: 'd-none',
-                    name: '',
-                    address: '',
-                    city: '',
-                    state: '',
-                    zip: '',
-                    phone: '',
-                    orgEmail: '',
-                    description: '',
-                    url: '',
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    password: '',
-                    tabUser: `active`,
-                    tabOrg: '',
-                    showUser: 'tab-pane fade active show',
-                    showOrg: 'tab-pane fade',
                     message: "Already signed up as a user.",
                     signup: 'd-none',
                     login: 'd-none',
@@ -117,7 +98,7 @@ async function checkLogin(req, res) {
                     ad: 'd-none',
                     dogs: 'd-none',
                     logout: 'Log out',
-                    id: userInstance.orgId
+                    id: ''
                 }
             });
         }
@@ -202,28 +183,48 @@ async function addOrganization(req, res) {
             }
         });
     } else {
-        // Create new Organization
-        const addOrgan = await Organization.addOrganization(name, address, city, state, zip, phone, orgEmail, 'orgPassword', description, url); // Prevents showing password unhashed
-        console.log(addOrgan);
+        const checkEmail = await User.getByEmail(req.body.orgEmail);
+        if (checkEmail === null) {
+            // Create new Organization
+            const addOrgan = await Organization.addOrganization(name, address, city, state, zip, phone, orgEmail, 'orgPassword', description, url); // Prevents showing password unhashed
+            console.log(addOrgan);
 
-        // This will create an Organization Instance
-        const instanceOrgan = new Organization(addOrgan.id, addOrgan.name, addOrgan.address, addOrgan.city, addOrgan.state, addOrgan.zip, addOrgan.phone, addOrgan.email, addOrgan.password, addOrgan.description, addOrgan.website);
-        console.log(instanceOrgan);
+            // This will create an Organization Instance
+            const instanceOrgan = new Organization(addOrgan.id, addOrgan.name, addOrgan.address, addOrgan.city, addOrgan.state, addOrgan.zip, addOrgan.phone, addOrgan.email, addOrgan.password, addOrgan.description, addOrgan.website);
+            console.log(instanceOrgan);
 
-        // Create new User
-        const orgUser = await User.add(instanceOrgan.name, instanceOrgan.name, instanceOrgan.email, instanceOrgan.password, instanceOrgan.id);
-        console.log(orgUser);
-        
-        // User Instance
-        const instanceUserOrg = new User(orgUser.id, orgUser.first_name, orgUser.last_name, orgUser.email, orgUser.password, orgUser.org_id);
-        console.log(instanceUserOrg);
+            // Create new User
+            const orgUser = await User.add(instanceOrgan.name, instanceOrgan.name, instanceOrgan.email, instanceOrgan.password, instanceOrgan.id);
+            console.log(orgUser);
+            
+            // User Instance
+            const instanceUserOrg = new User(orgUser.id, orgUser.first_name, orgUser.last_name, orgUser.email, orgUser.password, orgUser.org_id);
+            console.log(instanceUserOrg);
 
-        // Hash Pass
-        await instanceUserOrg.setPassword(orgPassword);
-        await instanceUserOrg.save();
+            // Hash Pass
+            await instanceUserOrg.setPassword(orgPassword);
+            await instanceUserOrg.save();
 
-
-        res.redirect('/');
+            const theEmail = escape(req.body.orgEmail);
+            const theUser = await User.getByEmail(theEmail);
+            req.session.user = theUser.id;
+            req.session.save(() => {
+                res.redirect('/');
+            });
+        } else {
+            res.render('error', {
+                locals: {
+                    message: "Organization email already exist.",
+                    signup: 'Sign up',
+                    login: 'Log in',
+                    favorite: 'd-none',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'd-none',
+                    id: ''
+                }
+            });
+        }
     }
 }
 

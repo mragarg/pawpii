@@ -10,7 +10,7 @@ async function getAll(req, res) {
         if (userInstance.orgId) {
             res.render('error', {
                 locals: {
-                    message: 'Organization cannot have favorite',
+                    message: 'Only users can view their favorites.',
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
@@ -37,7 +37,7 @@ async function getAll(req, res) {
     } else {
         res.render('error', {
             locals: {
-                message: 'Log in as user to see favorite',
+                message: 'Log in as a user to view favorites.',
                 signup: 'Sign up',
                 login: 'Log in',
                 favorite: 'd-none',

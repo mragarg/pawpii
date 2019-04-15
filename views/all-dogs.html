@@ -14,6 +14,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>All Dogs</title>
+</head>
+<body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark static-top">
         <div class="container">
@@ -57,14 +59,12 @@
     
     <form
     action="/dogs"
-    method="POST">
-   
-    <div class="form-group">
-            <label for="state" class="col-sm-2 control-label">Orgs By State</label>
-        
-            <div class="col-sm-10">
-                <select class="form-control" id="state" name="state" required="required">
-                    <option value="">N/A</option>
+    method="POST"
+    >
+    <div class="form-group text-center pt-3">
+            <div class="col-sm-10 mw-100">
+                <select class="form-control col-8 d-inline" id="state" name="state" required="required">
+                    <option value="" selected disabled>Shelters by state</option>
                     <option value="AK">Alaska</option>
                     <option value="AL">Alabama</option>
                     <option value="AR">Arkansas</option>
@@ -118,23 +118,33 @@
                     <option value="WV">West Virginia</option>
                     <option value="WY">Wyoming</option>
                 </select>
-                <button type="submit" class="btn btn-dark">Go!</button>
-
+                <button type="submit" class="btn btn-dark" style="background-color: rgb(23, 138, 165); color: white;">Search</button>
+                
             </div>
         </div>
     </form>
-    <h1>Puppies looking for new home</h1>
-    <div class="card-group">
+    <!-- <div class="card-group">
         ${
             dogsA.map((aDog) => {
                 return `<div class="card" style="width: 18rem;">
-                            <img src="${aDog.image_url}" class="card-img-top" alt="">
-                        </div>`
+                    <img src="${aDog.image_url}" class="card-img-top" alt="">
+                </div>`
             }).join('')
         }
+    </div> -->
+    <p class="text-center" style="font-size: 6vw;">puppies need new home</p>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                ${
+                    dogsA.map((aDog) => {
+                        return `<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <img class="img-thumbnail" src="${aDog.image_url}" alt="">
+                            </div>`
+                    }).join('')
+                }
+            </div>
+        </div>
     </div>
-</head>
-<body>
-    
 </body>
 </html>

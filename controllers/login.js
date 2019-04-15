@@ -5,31 +5,29 @@ async function getLoginPage(req, res) {
     if (req.session.user) {
         const userInstance = await User.getById(req.session.user);
         if (userInstance.orgId) {
-            res.render('login', {
+            res.render('error', {
                 locals: {
-                    email: '',
-                    message: 'Please login.',
-                    signup: 'd-none',
-                    login: 'd-none',
-                    favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out',
-                    id: userInstance.orgId
-                }
-            });
-        } else if (userInstance.orgId === null) {
-            res.render('login', {
-                locals: {
-                    email: '',
-                    message: 'Please login.',
+                    message: 'Already logged in as an organizaion.',
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'Favorite',
                     ad: 'd-none',
                     dogs: 'd-none',
                     logout: 'Log out',
-                    id: userInstance.orgId
+                    id: ''
+                }
+            });
+        } else if (userInstance.orgId === null) {
+            res.render('error', {
+                locals: {
+                    message: 'Already logged in as a user.',
+                    signup: 'd-none',
+                    login: 'd-none',
+                    favorite: 'Favorite',
+                    ad: 'd-none',
+                    dogs: 'd-none',
+                    logout: 'Log out',
+                    id: ''
                 }
             });
         }

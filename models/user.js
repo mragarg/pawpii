@@ -24,7 +24,6 @@ class User {
                 return aUser;
             })
             .catch(() => {
-                console.log("catchdasdasdsadad");
                 return null;
             });
     }

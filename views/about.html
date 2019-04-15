@@ -14,6 +14,33 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>About</title>
+    <style>
+        .page-background {
+            background: url(https://images.pexels.com/photos/1849435/pexels-photo-1849435.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+        }
+        .message {
+            font-family: 'Indie Flower', cursive;
+            text-shadow: 2px 2px black;
+        }
+        body,html {
+            height:100%
+        }
+        .parallax { 
+        /* The image used */
+        background-image: url(https://images.pexels.com/photos/1849435/pexels-photo-1849435.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+
+        /* Set a specific height */
+        height: 90%; 
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -56,6 +83,36 @@
             </div>
         </div>
     </nav>
-    <h1>About Us</h1>
+
+    <div class="page-background w-100 text-center">
+
+        <div class="text text-white col-8 py-3 m-auto" style="background-color:rgba(0, 0, 0, 0.5);">
+            <h1>About Us</h1>
+            <p>The company that brought you Nu.Trac, we present to you PawPii! PawPii 
+                is a resource dedicated to assisting Adoption Shelters connect 
+                with caring individuals to add a four-legged friend to their family.
+                With puppies at the root of our brand, we believe that families should 
+                experience the love and trust they can bring. 
+            </p>
+            <h4>Technologies Used:</h4>
+            <ul class="list-unstyled">
+                <li>JavaScript (Object Oriented Programming)</li>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>ES6</li>
+                <li>BootStrap</li>
+                <li>Amazon Web Services (AWS)</li>
+                <li>PostgreSQL</li>
+                <li>ExpressJS</li>
+                <li>NodeJS</li>
+                <li>BcryptJS</li>
+                <li>.ENV</li>
+                <li>TDD-Development (Mocha, Chai)</li>
+                <li>Git (GitHub)</li>
+            </ul>
+        </div>
+
+    </div>
+
 </body>
 </html>

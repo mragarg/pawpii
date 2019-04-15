@@ -54,8 +54,8 @@
             </div>
         </div>
     </nav>
-    <div>
-        <address>
+    <div class="text-center py-2" style="font-size: 2vh;">
+        <address class="mb-0">
             <strong>${orgs.name}</strong> 
             <br> 
             ${orgs.address}<br>
@@ -67,16 +67,22 @@
         </address>
 
     </div>
-    <div class="card-group">
-        ${
-            dogsA.map((aDog) => {
-                return `<div class="card" style="width: 18rem;"><a href="/organization/dogs/${aDog.org_id}/${aDog.id}">
-                            <img src="${aDog.image_url}" class="card-img-top" alt="">
-                        </a>
-                        </div>`
-            }).join('')
-        }
-    </div>
+    <div class="container">
+            <div class="row">
+                <div class="row">
+                    ${
+                        dogsA.map((aDog) => {
+                            return `<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <a href="/organization/dogs/${aDog.org_id}/${aDog.id}">
+                                <img class="img-thumbnail" src="${aDog.image_url}" alt="">
+                                </a>
+                                </div>`
+                        }).join('')
+                    }
+                </div>
+            </div>
+        </div>
+    
 </head>
 <body>
     

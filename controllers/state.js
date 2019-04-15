@@ -19,9 +19,9 @@ async function orgsByState(req, res) {
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
-                    ad: 'Add / Delete',
-                    dogs: 'Current dogs',
-                    logout: 'Log out',
+                    ad: '',
+                    dogs: '',
+                    logout: '',
                     id: userInstance.orgId
                 }
             });
@@ -31,10 +31,10 @@ async function orgsByState(req, res) {
                     orgs: allOrgs,
                     signup: 'd-none',
                     login: 'd-none',
-                    favorite: 'Favorite',
+                    favorite: '',
                     ad: 'd-none',
                     dogs: 'd-none',
-                    logout: 'Log out',
+                    logout: '',
                     id: userInstance.orgId
                 }
             });
@@ -43,8 +43,8 @@ async function orgsByState(req, res) {
         res.render('orgs-by-state', {
             locals: {
                 orgs: allOrgs,
-                signup: 'Sign up',
-                login: 'Log in',
+                signup: '',
+                login: '',
                 favorite: 'd-none',
                 ad: 'd-none',
                 dogs: 'd-none',

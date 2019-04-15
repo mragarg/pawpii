@@ -55,21 +55,24 @@
         </div>
     </nav>
   
-        <div class="card-group">
-            <div class="card" style="width: 18rem;">
-            <img src="${dog.image_url}" class="card-img-top" alt="">
+    <div class="dogProfileContainer w-100 container py-3">
+
+        <div class="">
+            <img src="${dog.image_url}" class="pb-3 rounded mx-auto d-block" alt="">
         </div>
+        <div class="card-group">
             <strong> Name: </strong>${dog.name}
             <strong> Breed: </strong>${dog.breed}
             <strong> Age: </strong> ${dog.age}
             <strong> Description:</strong> ${dog.description}
-           
         </div>
         <form 
-        action="/organization/dogs/${dog.org_id}/${dog.id}"
-        method="POST">
-        <button class="bg-transparent border-white" type="submit"><img src=${favoritepic}></button> 
-    </form>
+            action="/organization/dogs/${dog.org_id}/${dog.id}"
+            method="POST">
+            <button class="bg-transparent border-white" type="submit"><img src=${favoritepic}></button> 
+        </form>
+
+    </div>
 </head>
 <body>
     

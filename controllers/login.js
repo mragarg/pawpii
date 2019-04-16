@@ -54,7 +54,6 @@ async function attemptLogin(req, res) {
     console.log(req.body.password);
     const theEmail = escapeHtml(req.body.email);
     const thePassword = escapeHtml(req.body.password);
-
     const theUser = await User.getByEmail(theEmail);
     if (theUser) {
         const passwordIsCorrect = theUser.checkPassword(thePassword);
@@ -95,7 +94,6 @@ async function attemptLogin(req, res) {
             }
         })
     }
-
 }
 
 module.exports = {

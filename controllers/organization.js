@@ -232,7 +232,7 @@ async function getProfile (req, res) {
                             ad: '',
                             dogs: '',
                             logout: '',
-                            id: '',
+                            id: userInstance.orgId,
                             dog: oneDog,
                             favoritepic: ''
                         }

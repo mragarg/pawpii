@@ -16,6 +16,7 @@ async function orgsByState(req, res) {
             res.render('orgs-by-state', {
                 locals: {
                     orgs: allOrgs,
+                    state: state,
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: 'd-none',
@@ -29,6 +30,7 @@ async function orgsByState(req, res) {
             res.render('orgs-by-state', {
                 locals: {
                     orgs: allOrgs,
+                    state,
                     signup: 'd-none',
                     login: 'd-none',
                     favorite: '',

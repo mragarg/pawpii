@@ -35,7 +35,7 @@ async function getLoginPage(req, res) {
         res.render('login', {
             locals: {
                 email: '',
-                message: 'Please login.',
+                message: 'Please log in.',
                 signup: '',
                 login: '',
                 favorite: 'd-none',

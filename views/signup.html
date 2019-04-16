@@ -16,8 +16,9 @@
     <title>Sign Up</title>
     <style type="text/css">
         .login-form {
-            width: 340px;
-            margin: 30px auto;
+            min-width: 280px;
+            max-width: 380px;
+            margin: 0 auto;
         }
         .login-form form {
             margin-bottom: 15px;
@@ -113,13 +114,15 @@
     </nav>
     <div class="text-center m-2" style="font-size: 4vh"><strong>${message}</strong></div>
     
-<section class="container py-4 text-center">
+<section class="container text-center">
         <div class="row">
             <div class="col-md-12">
+                <div class="d-flex justify-content-center">
                 <ul id="tabsJustified" class="nav nav-pills">
                     <li class="nav-item"><a href="" data-target="#user" data-toggle="tab" class="nav-link small text-uppercase ${tabUser}">User</a></li>
                     <li class="nav-item"><a href="" data-target="#organization" data-toggle="tab" class="nav-link small text-uppercase ${tabOrg}">Organization</a></li>
                 </ul>
+            </div>
                 <br>
                 <div id="tabsJustifiedContent" class="tab-content">
                     
@@ -130,7 +133,7 @@
                         >    
                         <div class="login-form">
         
-                                    <h2 class="text-center">User</h2>
+                                    <h4 class="text-center">User</h4>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -180,7 +183,7 @@
                                     >    
                                         <div class="login-form">
                     
-                                                <h2 class="text-center">Organization</h2>
+                                                <h4 class="text-center">Organization</h4>
                                                 <div class="form-group">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -319,23 +322,5 @@
                 </div>
             </div>
     </section>
-
-
-    <!-- <div class="col-sm-9">
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                <li><a data-toggle="tab" href="#messages">Menu 1</a></li>
-                <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
-              </ul>
-
-              
-          <div class="tab-content">
-            <div class="tab-pane active" id="home">
-                <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group"> -->
-                          
-                   
-    
 </body>
 </html>

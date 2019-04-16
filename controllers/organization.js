@@ -263,10 +263,15 @@ async function addToFavorites (req, res) {
     }
     if (inFavorite) {
         console.log('already in favorites')
+        console.log(req.session.user)
+        console.log(oneDog.id)
+        const unfavorite = await userTest.deleteFromFavorites(userTest.id, oneDog.id)
+        console.log(unfavorite)
+
     } else {
     const favorited = await userTest.addFavorite(userTest.id, oneDog.id)
     console.log(favorited)
-}
+    }
     
     res.redirect(`/organization/dogs/${oneDog.org_id}/${oneDog.id}`)
 }

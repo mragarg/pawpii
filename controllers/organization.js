@@ -205,6 +205,7 @@ async function getProfile (req, res) {
 
     if (inFavorite) {
         favorited = 'https://i.imgur.com/BPk44AP.png'
+
     }
 
         if (userInstance.orgId === null) { 
@@ -247,11 +248,25 @@ async function addToFavorites (req, res) {
     console.log('TESTTTTTTTTTTTT')
     const {id} = req.params
     let userTest = await User.getById(req.session.user)
-    console.log("MADE IT THIS FAR");
-    const oneDog = await Dog.getOneDog(id)
+    const favoriteArray = await Favorite.getUserFavorites(req.session.user);
 
+    console.log("MADE IT THIS FAR");
+    let inFavorite = false
+    const oneDog = await Dog.getOneDog(id)
+    for(let i=0; i<favoriteArray.length; i++) {
+        console.log(favoriteArray[i].dog_id)
+        if (favoriteArray[i].dog_id === oneDog.id){
+            inFavorite = true 
+            console.log('DONEEEEEEEEEEEEEEE')
+            break;
+        }
+    }
+    if (inFavorite) {
+        console.log('already in favorites')
+    } else {
     const favorited = await userTest.addFavorite(userTest.id, oneDog.id)
     console.log(favorited)
+}
     
     res.redirect(`/organization/dogs/${oneDog.org_id}/${oneDog.id}`)
 }

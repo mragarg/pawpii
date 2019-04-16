@@ -132,6 +132,10 @@ class User {
             return data;
         })
     }
+     deleteFromFavorites(userId, dogId) {
+        return db.none(` delete from favorites where user_id=$1 and dog_id=$2` , [userId, dogId])
+    }
+    
 
 }
 

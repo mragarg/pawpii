@@ -11,6 +11,7 @@ class Favorite {
                 on f.dog_id = d.id 
             where u.id=$1`, [userId]);
     }
+    
 
 }
 

@@ -35,7 +35,7 @@ async function getLoginPage(req, res) {
         res.render('login', {
             locals: {
                 email: '',
-                message: 'Please login.',
+                message: 'Please log in.',
                 signup: '',
                 login: '',
                 favorite: 'd-none',
@@ -54,7 +54,6 @@ async function attemptLogin(req, res) {
     console.log(req.body.password);
     const theEmail = escapeHtml(req.body.email);
     const thePassword = escapeHtml(req.body.password);
-
     const theUser = await User.getByEmail(theEmail);
     if (theUser) {
         const passwordIsCorrect = theUser.checkPassword(thePassword);
@@ -95,7 +94,6 @@ async function attemptLogin(req, res) {
             }
         })
     }
-
 }
 
 module.exports = {

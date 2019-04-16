@@ -57,7 +57,7 @@
             </div>
         </nav>
     
-        <h1>Add Dog</h1>
+        <h3 class="text-center m-1">Add Dog</h3>
         <form 
         action="/organization/add-delete"
         method="POST"
@@ -67,7 +67,6 @@
                 <label for="exampleFormControlInput1">Name</label>
                 <input type="text" class="form-control" name="dogName" id="dogName" placeholder="Clifford">
             </div>
-
             <div class="form-group">
                 <label for="exampleFormControlInput1">Breed</label>
                 <input type="text" class="form-control" name="dogBreed" id="dogBreed" placeholder="Bloodhound">
@@ -88,11 +87,14 @@
                 <input type="text" class="form-control" name="dogImg" id="dogImg" placeholder="https://vignette.wikia.nocookie.net/clifford/images/d/d1/Clifford4.png/revision/latest?cb=20131006055214">
             </div>
             
-            <button type="submit" class="btn btn-outline-success mt-3">Add Dog</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success mt-3">Add Dog</button>
+            </div>
 
         </form>
-            <h1>Delete Dog</h1>
-            <div class="card-group">
+            <h3 class="text-center mt-4 mb-2">Delete Dog</h3>
+            
+            <div class="card-group text-center px-5">
                 ${
                     dogsA.map((aDog) => {
                         return `
@@ -100,10 +102,10 @@
                                     action="/organization/add-delete/${aDog.id}"
                                     method="POST"      
                         >
-                        <div class="card" style="width: 18rem;" id=${aDog.id}>
-                                    <img src="${aDog.image_url}" class="card-img-top" alt="" >
-                                    <button type="submit" class="btn btn-primary">Delete</button>
-                                </div>
+                            <div class="mx-auto text-center p-2" style="width: 18rem;" id=${aDog.id}>
+                                        <img src="${aDog.image_url}" class="card-img-top" alt="" >
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
                                 </form>
                           `
                     }).join('')
